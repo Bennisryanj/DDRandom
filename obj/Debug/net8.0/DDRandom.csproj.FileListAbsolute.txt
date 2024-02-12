@@ -1,0 +1,14 @@
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.AssemblyInfoInputs.cache
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.AssemblyInfo.cs
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.csproj.CoreCompileInputs.cache
+C:\Users\bennisry\Desktop\DDRandom\bin\Debug\net8.0\DDRandom.exe
+C:\Users\bennisry\Desktop\DDRandom\bin\Debug\net8.0\DDRandom.deps.json
+C:\Users\bennisry\Desktop\DDRandom\bin\Debug\net8.0\DDRandom.runtimeconfig.json
+C:\Users\bennisry\Desktop\DDRandom\bin\Debug\net8.0\DDRandom.dll
+C:\Users\bennisry\Desktop\DDRandom\bin\Debug\net8.0\DDRandom.pdb
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.dll
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\refint\DDRandom.dll
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.pdb
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.genruntimeconfig.cache
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\ref\DDRandom.dll
