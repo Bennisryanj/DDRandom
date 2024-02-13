@@ -15,7 +15,7 @@ namespace Combat
                 if (success)
                 {
                     enemy.HitPoints -= damage;
-                    System.Console.WriteLine("Character attacks enemy for " + damage + " damage!");
+                    System.Console.WriteLine($"{character.Name} attacks {enemy.Name} for " + damage + " damage!");
                 }
                 if (enemy.HitPoints > 0)
                 {
@@ -23,7 +23,7 @@ namespace Combat
                     if (success1)
                     {
                         character.HitPoints -= damage1;
-                        System.Console.WriteLine("Enemy attacks character for " + damage1 + " damage!");
+                        System.Console.WriteLine($"{enemy.Name} attacks {character.Name} for " + damage1 + " damage!");
                     }
                 }
             }

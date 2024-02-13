@@ -12,3 +12,4 @@ C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\refint\DDRandom.dll
 C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.pdb
 C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.genruntimeconfig.cache
 C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\ref\DDRandom.dll
+C:\Users\bennisry\Desktop\DDRandom\obj\Debug\net8.0\DDRandom.sourcelink.json

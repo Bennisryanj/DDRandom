@@ -56,35 +56,7 @@ namespace Character
 
         }
         
-        public void createCharater()
-        {
-
-            int strength = RandomNumberGenerator.GetInt32(1, 20);
-            int wisdom = RandomNumberGenerator.GetInt32(1, 20);
-            int charisma = RandomNumberGenerator.GetInt32(1, 20);
-            int dexterity = RandomNumberGenerator.GetInt32(1, 20);
-            int constitution = RandomNumberGenerator.GetInt32(1, 20);
-            int armorClass = RandomNumberGenerator.GetInt32(1, 20);
-            int hitPoints = RandomNumberGenerator.GetInt32(1, 15);
-            Character1 character = new Character1("Gandalf", strength, wisdom, charisma, dexterity, constitution, hitPoints, armorClass, false);
-        }
-
-        public void createEnemy()
-        {
-             
-            int strength = RandomNumberGenerator.GetInt32(1, 20);
-            int wisdom = RandomNumberGenerator.GetInt32(1, 20);
-            int charisma = RandomNumberGenerator.GetInt32(1, 20);
-            int dexterity = RandomNumberGenerator.GetInt32(1, 20);
-            int constitution = RandomNumberGenerator.GetInt32(1, 20);
-            int armorClass = RandomNumberGenerator.GetInt32(1, 20);
-            int hitPoints = RandomNumberGenerator.GetInt32(1, 15);
-            Character1 character = new Character1("Goblin", strength, wisdom, charisma, dexterity, constitution, hitPoints, armorClass, true);
-           
-
-        }
                
-        
         public void Die(int hitPoints, bool isMonster)
         {
             if (hitPoints <= 0)
