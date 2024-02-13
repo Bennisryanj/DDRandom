@@ -63,7 +63,7 @@ namespace Character
             {
                 if (isMonster)
                 {
-                    Console.WriteLine("Enemy has been defeated!");  
+                    Console.WriteLine("\n");  
                     
                 }
                 else
