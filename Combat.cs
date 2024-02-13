@@ -7,7 +7,7 @@ namespace Combat
     {
         public void Fight(Character1 character, Character1 enemy)
         {
-            System.Console.WriteLine("test");
+
             while (character.HitPoints > 0 && enemy.HitPoints > 0)
             {
                
