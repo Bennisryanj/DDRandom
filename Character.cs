@@ -26,7 +26,7 @@ namespace Character
         // Constitution Modifier
 
 
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster)
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0)
         {
             Name = name;
             Strength = strength;
@@ -37,14 +37,11 @@ namespace Character
             HitPoints = hitPoints;
             ArmorClass = armorClass;
             IsMonster = isMonster;
+            Initiative = initiative;
         }
 
         public void Attack(int enemyarmorclass, out bool success, out int damage)
         {
-            // Add attack logic here
-            // should be a random number between 1 and 20 + strength modifier for a melee attack
-            // if the number is greater than the enemy's armor class, the attack is successful
-            // if the attack is successful, the damage is 5 (for now)
             damage = 5;
             if (Strength > enemyarmorclass)
             {

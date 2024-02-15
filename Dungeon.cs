@@ -76,6 +76,7 @@ namespace DDDungeon
         {
             string[] enemyNames = { "Little Baby Goblin", "Big Daddy Goblin", "Goblin King", "Goblin Queen", "Goblin Prince", "Goblin Princess", "Goblin Knight", "Goblin Wizard", "Goblin Sorcerer", "Goblin Cleric"};
             
+            
 
             for (int i = 0; i < 3; i++)
             {
