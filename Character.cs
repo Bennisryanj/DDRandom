@@ -16,7 +16,7 @@ namespace Character
         public int HitPoints { get; set; }
         public int ArmorClass { get; set; }
         public bool IsMonster { get; set; }
-        public int Initiative { get; set; }
+        public int initiative { get; set; }
 
         // Need to add properties for the following:
         // Strength Modifier 
@@ -55,21 +55,33 @@ namespace Character
         }
         
                
-        public void Die(int hitPoints, bool isMonster)
+        public void Die( bool isMonster, string name)
         {
-            if (hitPoints <= 0)
-            {
-                if (isMonster)
+
+                if (isMonster = true)
                 {
-                    Console.WriteLine("\n");  
+                 return;
                     
                 }
                 else
                 {
-                    Console.WriteLine("Character has been defeated!");
-
+                    Console.WriteLine($"{name} has been defeated!");
                 }
-            }
+        }
+
+        public void Levelup()
+        {
+            // Add level up logic here
+            // increase hit points by 10
+            // increase armor class by 2
+            // increase strength, wisdom, charisma, dexterity, and constitution by 1
+            HitPoints += 10;
+            ArmorClass += 2;
+            Strength += 1;
+            Wisdom += 1;
+            Charisma += 1;
+            Dexterity += 1;
+            Constitution += 1;
         }
     }
 }
