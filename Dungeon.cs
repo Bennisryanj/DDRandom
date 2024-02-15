@@ -22,7 +22,7 @@ namespace DDDungeon
             string[] playerNames = { "Player1", "Player2", "Player3" };
             int randomIndex = new Random().Next(0, playerNames.Length);
 
-            Character1 player = new Character1(playerNames[randomIndex], 10, 10, 10, 10, 10, 10, 10, false);
+            Character1 player = new Character1(playerNames[randomIndex], 15, 15, 15, 15, 15, 15, 15, false);
             Console.WriteLine($"Welcome to the Dungeon, {player.Name}!");
             Console.WriteLine("You are now in a room with a monster!");
             while (playerAlive)
@@ -57,11 +57,12 @@ namespace DDDungeon
         public List<Character1> GenerateEnemies()
         {
             string[] enemyNames = { "Little Baby Goblin", "Big Daddy Goblin", "Goblin King", "Goblin Queen", "Goblin Prince", "Goblin Princess", "Goblin Knight", "Goblin Wizard", "Goblin Sorcerer", "Goblin Cleric"};
-            int randomIndex = new Random().Next(0, enemyNames.Length);
+            
 
             for (int i = 0; i < 3; i++)
             {
-                Character1 enemy = new Character1(enemyNames[randomIndex], 10, 10, 10, 10, 10, 10, 10, true);
+                int randomIndex = new Random().Next(0, enemyNames.Length);
+                Character1 enemy = new Character1(enemyNames[randomIndex], 10, 10, 10, 10, 10, 10, 10, true,0);
                 enemies.Add(enemy);
                 Console.WriteLine($"Generated enemy: {enemy.Name}");
             }
