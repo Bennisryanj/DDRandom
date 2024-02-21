@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using Character;
 using Combat;
@@ -23,52 +24,60 @@ namespace DDDungeon
             string[] playerNames = { "Player1", "Player2", "Player3" };
             int randomIndex = new Random().Next(0, playerNames.Length);
 
-            Character1 player = new Character1(playerNames[randomIndex], 10, 10, 10, 10, 10, 10, 10, false);
+            Character1 player = new Character1(playerNames[randomIndex], 10, 10, 10, 10, 10, 10, 10, false, 0, true, 0);
 
-          //  generateParty();
+            List<Character1> party = generateParty();
+            List<Character1> enemies = GenerateEnemies();
+
+            // set up the code so it will finish a room and then ask the player if they want to continue
+            // if they do, generate a new room with new enemies, keeping the same party
+            // if they don't, end the game
             Console.WriteLine($"Welcome to the Dungeon, {player.Name}!");
             Console.WriteLine("You are now in a room with a monster!");
-            while (playerAlive)
+
+
+
+            while(party.Count > 0 && enemies.Count > 0)
             {
-                ecounter(player);
-                if (player.HitPoints <= 0)
-                {
-                    playerAlive = false;
-                    Console.WriteLine("You have died!");
-                }
-                else
-                {
-                    Console.WriteLine("You have defeated the monster!");
-                }
+                ecounter(party, enemies);
+            }
+            if (party.Count == 0)
+            {
+                Console.WriteLine("You have been defeated!");
+            }
+            else if (enemies.Count == 0)
+            {
+                Console.WriteLine("You have defeated the enemies!");
             }
         }
 
 
-        public Character1[] generateParty()
+        public List<Character1> generateParty()
         {
-            Character1[] party = new Character1[4];
+            List<Character1> party = new List<Character1>();
             string[] playerNames = { "Wizard", "Fighter", "Rougue","Druid" };
             for (int i = 0; i < 4; i++)
             {
                 int randomIndex = new Random().Next(0, playerNames.Length);
-                Character1 player = new Character1(playerNames[randomIndex], 10, 10, 10, 10, 10, 10, 10, false);
-                party[i] = player;
+                Character1 player = new Character1(playerNames[randomIndex], 10, 10, 10, 10, 10, 1000, 10, false, 0, true, i);
+                party.Add(player);
                 
             }
             return party;
 
         }
 
-        public async void ecounter(Character1 character)
+        public async void ecounter(List<Character1> party, List<Character1> enemies)
         {
-           List<Character1> enemies = GenerateEnemies();
+           
 
             Combat1 combat = new Combat1();
 
-            foreach (Character1 enemy in enemies)
+            while (party.Count > 0 && enemies.Count > 0)
             {
-                combat.Fight(character, enemy);
+                combat.Fight(party, enemies);
             }
+            
 
         }
 
@@ -78,10 +87,10 @@ namespace DDDungeon
             
             
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 int randomIndex = new Random().Next(0, enemyNames.Length);
-                Character1 enemy = new Character1(enemyNames[randomIndex], 10, 10, 10, 10, 10, 1, 10, true);
+                Character1 enemy = new Character1(enemyNames[randomIndex], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);
                 enemies.Add(enemy);
                 Console.WriteLine($"Generated enemy: {enemy.Name}");
             }

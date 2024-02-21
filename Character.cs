@@ -16,7 +16,10 @@ namespace Character
         public int HitPoints { get; set; }
         public int ArmorClass { get; set; }
         public bool IsMonster { get; set; }
-        public int initiative { get; set; }
+        public int Initiative { get; set; }
+        public bool IsAlive { get; set; } = true;
+
+        public int PartyIndex { get; set; }
 
         // Need to add properties for the following:
         // Strength Modifier 
@@ -26,7 +29,7 @@ namespace Character
         // Constitution Modifier
 
 
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0)
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0) 
         {
             Name = name;
             Strength = strength;
@@ -38,6 +41,8 @@ namespace Character
             ArmorClass = armorClass;
             IsMonster = isMonster;
             Initiative = initiative;
+            IsAlive = isAlive;
+            PartyIndex = partyIndex;
         }
 
         public void Attack(int enemyarmorclass, out bool success, out int damage)
@@ -55,18 +60,22 @@ namespace Character
         }
         
                
-        public void Die( bool isMonster, string name)
+        public void Die( bool isMonster, string name, int partyindex, List<Character1> party, List<Character1> enemies)
         {
+            if (isMonster)
+            {
+                enemies[partyindex].IsAlive = false;
+                Console.WriteLine($"{enemies[partyindex].Name} has been defeated!");
+                enemies.Remove(enemies[partyindex]);
+                
+            }
+            else
+            {
+                party[partyindex].IsAlive = false;
+                Console.WriteLine($"{party[partyindex].Name} has been defeated!");
+                party.Remove(party[partyindex]);
 
-                if (isMonster = true)
-                {
-                 return;
-                    
-                }
-                else
-                {
-                    Console.WriteLine($"{name} has been defeated!");
-                }
+            }
         }
 
         public void Levelup()

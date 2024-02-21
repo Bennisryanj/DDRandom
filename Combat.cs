@@ -5,65 +5,86 @@ namespace Combat
 {
     public class Combat1
     {
-        public void Fight(Character1 character, Character1 enemy)
+        public void Fight(List<Character1> party, List<Character1> enemies)
         {
+            rollInitiative(party, enemies);
+            List<Character1> iniativeOrder = iniativeorder(party, enemies);
 
-            character.Initiative = new System.Random().Next(1, 20);
-            enemy.Initiative = new System.Random().Next(1, 20);
-            System.Console.WriteLine($"{character.Name} has an initiative of " + character.Initiative);
-            System.Console.WriteLine($"{enemy.Name} has an initiative of " + enemy.Initiative);
-            while (character.HitPoints > 0 && enemy.HitPoints > 0)
+
+
+            foreach (Character1 character in iniativeOrder)
             {
-                System.Console.WriteLine($"{character.Name} has " + character.HitPoints + " hit points left!");
-                System.Console.WriteLine($"{enemy.Name} has " + enemy.HitPoints + " hit points left!");
-
-                if (character.initiative > enemy.initiative)
-                { 
-                    character.Attack(enemy.ArmorClass, out bool success, out int damage);
-                    if (success)
-                    {
-                        enemy.HitPoints -= damage;
-                        System.Console.WriteLine($"{character.Name} attacks {enemy.Name} for " + damage + " damage!");
-                    }
-                    if (enemy.HitPoints > 0)
-                    {
-                        enemy.Attack(character.ArmorClass, out bool success1, out int damage1);
-                        if (success1)
-                        {
-                            character.HitPoints -= damage1;
-                            System.Console.WriteLine($"{enemy.Name} attacks {character.Name} for " + damage1 + " damage!");
-                        }
-                    }
-                }
-                else 
+                if (!character.IsMonster)
                 {
-                    enemy.Attack(character.ArmorClass, out bool success1, out int damage1);
-                    if (success1)
+                    int attackRoll = attack();
+                    if (attackRoll > character.ArmorClass)
                     {
-                        character.HitPoints -= damage1;
-                        System.Console.WriteLine($"{enemy.Name} attacks {character.Name} for " + damage1 + " damage!");
-                    }
-                    if (character.HitPoints > 0)
-                    {
-                        character.Attack(enemy.ArmorClass, out bool success, out int damage);
-                        if (success)
-                        {
-                            enemy.HitPoints -= damage;
-                            System.Console.WriteLine($"{character.Name} attacks {enemy.Name} for " + damage + " damage!");
-                        }
+                        int randomIndex = new Random().Next(0, enemies.Count);
+                        int damage = new Random().Next(1, 6);
+                        enemies[randomIndex].HitPoints -= damage;
+                        System.Console.WriteLine($"{character.Name} attacks {enemies[randomIndex].Name} for {damage} damage!");
                     }
                 }
+                else
+                {
+                    int attackRoll = attack();
+                    if (attackRoll > character.ArmorClass)
+                    {
+                        int randomIndex = new Random().Next(0, party.Count);
+                        int damage = new Random().Next(1, 6);
+                        party[randomIndex].HitPoints -= damage;
+                        System.Console.WriteLine($"{character.Name} attacks {party[randomIndex].Name} for {damage} damage!");
+                        
+                    }
+                }
+
+                if (character.HitPoints <= 0)
+                {
+                    if (character.IsMonster)
+                    {
+                        int enemyIndex = enemies.IndexOf(character);
+                        character.Die(character.IsMonster, character.Name, enemyIndex, party, enemies);
+                    }
+                    else
+                    {
+                        int partyIndex = party.IndexOf(character);
+                        character.Die(character.IsMonster, character.Name, partyIndex, party, enemies);
+                    }
+                }
+                
             }
 
-            if (character.HitPoints <= 0)
-            {
+            
+        }
 
-                character.Die(character.IsMonster, character.Name);
-            }
-            else
+        public void rollInitiative(List<Character1> party, List<Character1> enemies)
+        {
+            foreach (Character1 player in party)
             {
-                enemy.Die( enemy.IsMonster, enemy.Name);
+                player.Initiative = new Random().Next(1, 20);
+            }
+
+            foreach (Character1 enemy in enemies)
+            {
+                enemy.Initiative = new Random().Next(1, 20);
             }
         }
+
+        public int attack()
+        {
+            return new Random().Next(1, 20);
+        }
+
+        public List<Character1> iniativeorder(List<Character1> party, List<Character1> enemies)
+        {
+            List<Character1> iniativeOrder = new List<Character1>();
+            iniativeOrder.AddRange(party);
+            iniativeOrder.AddRange(enemies);
+            iniativeOrder.Sort((x, y) => x.Initiative.CompareTo(y.Initiative));
+
+            return iniativeOrder;
+        }
+
+
     }
 }
