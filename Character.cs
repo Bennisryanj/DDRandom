@@ -1,9 +1,12 @@
 using System;
+using System.Dynamic;
 using System.Security.Cryptography;
+using CharacterClass;
+using Microsoft.VisualBasic;
 
 namespace Character
 {
-    public  class Character1
+    public class Character1
     {
         // Add properties, methods, and fields here
 
@@ -20,6 +23,13 @@ namespace Character
         public bool IsAlive { get; set; } = true;
 
         public int PartyIndex { get; set; }
+
+        public List<string> Spells { get; set; }
+
+        public bool IsHidden { get; set; } = false;
+
+
+
 
         // Need to add properties for the following:
         // Strength Modifier 
@@ -45,20 +55,45 @@ namespace Character
             PartyIndex = partyIndex;
         }
 
-        public void Attack(int enemyarmorclass, out bool success, out int damage)
+        //Wizard 
+        public Character1( string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
         {
-            damage = 5;
-            if (Strength > enemyarmorclass)
-            {
-                success = false;
-            }
-            else
-            {
-                success = true;
-            }
-
+            Name = name;
+            Strength = strength;
+            Wisdom = wisdom;
+            Charisma = charisma;
+            Dexterity = dexterity;
+            Constitution = constitution;
+            HitPoints = hitPoints;
+            ArmorClass = armorClass;
+            IsMonster = isMonster;
+            Initiative = initiative;
+            IsAlive = isAlive;
+            PartyIndex = partyIndex;
+            Spells = spells;
         }
-        
+
+        //Rogue
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, bool isHidden = false)
+        {
+            Name = name;
+            Strength = strength;
+            Wisdom = wisdom;
+            Charisma = charisma;
+            Dexterity = dexterity;
+            Constitution = constitution;
+            HitPoints = hitPoints;
+            ArmorClass = armorClass;
+            IsMonster = isMonster;
+            Initiative = initiative;
+            IsAlive = isAlive;
+            PartyIndex = partyIndex;
+            IsHidden = isHidden;
+        }
+
+        //Fighter
+
+
                
         public void Die( bool isMonster, string name, int partyindex, List<Character1> party, List<Character1> enemies)
         {

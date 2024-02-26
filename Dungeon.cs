@@ -55,12 +55,29 @@ namespace DDDungeon
         public List<Character1> generateParty()
         {
             List<Character1> party = new List<Character1>();
-            string[] playerNames = { "Wizard", "Fighter", "Rougue","Druid" };
+            string[] playerClasses = { "Wizard", "Fighter", "Rougue","Druid" };
             for (int i = 0; i < 4; i++)
             {
-                int randomIndex = new Random().Next(0, playerNames.Length);
-                Character1 player = new Character1(playerNames[randomIndex], 10, 10, 10, 10, 10, 1000, 10, false, 0, true, i);
-                party.Add(player);
+                int randomIndex = new Random().Next(0, playerClasses.Length);
+                if (playerClasses[randomIndex] == "Wizard")
+                {
+                    Wizard playerWizard = new Wizard();
+                    Character1 player = new Character1(playerWizard.ClassName, playerWizard.Strength, playerWizard.Wisdom, playerWizard.Charisma, playerWizard.Dexterity,
+                     playerWizard.Constitution, 10, 10, false, 0, true, i, playerWizard.Spells);
+                    party.Add(player);
+                }
+                if (playerClasses[randomIndex] == "Rougue")
+                {
+                    Rouge playerRougue = new Rouge();
+                    Character1 player = new Character1(playerRougue.ClassName, playerRougue.Strength, playerRougue.Wisdom, playerRougue.Charisma, playerRougue.Dexterity,
+                     playerRougue.Constitution, 10, 10, false, 0, true, i);
+                    party.Add(player);
+                }
+                else
+                {
+                    Character1 player = new Character1(playerClasses[randomIndex], 10, 10, 10, 10, 10, 1000, 10, false, 0, true, i);
+                    party.Add(player);
+                }
                 
             }
             return party;

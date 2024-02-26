@@ -19,10 +19,22 @@ namespace Combat
                     int attackRoll = attack();
                     if (attackRoll > character.ArmorClass)
                     {
+                        if (character.Name == "Wizard")
+                        {
+                            int randomSpell = new Random().Next(0, character.Spells.Count);
+                            int damage = spellAttack(randomSpell);
+                            int randomIndex = new Random().Next(0, enemies.Count);
+                            enemies[randomIndex].HitPoints -= damage;
+                            System.Console.WriteLine($"The Wizard casts {character.Spells[randomSpell]} for {damage} damage!");
+                        }
+                        else
+                        {
                         int randomIndex = new Random().Next(0, enemies.Count);
                         int damage = new Random().Next(1, 6);
                         enemies[randomIndex].HitPoints -= damage;
                         System.Console.WriteLine($"{character.Name} attacks {enemies[randomIndex].Name} for {damage} damage!");
+                        }
+                       
                     }
                 }
                 else
@@ -83,6 +95,28 @@ namespace Combat
             iniativeOrder.Sort((x, y) => x.Initiative.CompareTo(y.Initiative));
 
             return iniativeOrder;
+        }
+
+        public int spellAttack(int randomSpell)
+        {
+           
+
+            if (randomSpell == 0)
+            {
+                return new Random().Next(1, 10);
+            }
+            else if (randomSpell == 1)
+            {
+                return new Random().Next(1, 6);
+            }
+            else if (randomSpell == 2)
+            {
+                return new Random().Next(1, 12);
+            }
+            else
+            {
+                return new Random().Next(1, 20);
+            }
         }
 
 
