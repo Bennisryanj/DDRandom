@@ -95,13 +95,14 @@ namespace Character
 
 
                
-        public void Die( bool isMonster, string name, int partyindex, List<Character1> party, List<Character1> enemies)
+        public void Die( bool isMonster, string name, int partyindex, List<Character1> party, List<Character1> enemies, List<Character1> iniativeOrder)
         {
             if (isMonster)
             {
                 enemies[partyindex].IsAlive = false;
                 Console.WriteLine($"{enemies[partyindex].Name} has been defeated!");
                 enemies.Remove(enemies[partyindex]);
+                iniativeOrder.Remove(enemies[partyindex]);
                 
             }
             else
@@ -109,6 +110,7 @@ namespace Character
                 party[partyindex].IsAlive = false;
                 Console.WriteLine($"{party[partyindex].Name} has been defeated!");
                 party.Remove(party[partyindex]);
+                iniativeOrder.Remove(party[partyindex]);
 
             }
         }
@@ -126,6 +128,11 @@ namespace Character
             Charisma += 1;
             Dexterity += 1;
             Constitution += 1;
+        }
+
+        public static implicit operator List<object>(Character1 v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

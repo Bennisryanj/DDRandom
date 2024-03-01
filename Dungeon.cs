@@ -4,6 +4,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using Character;
 using Combat;
+using IniativeOrder;
 
 namespace DDDungeon
 {
@@ -56,26 +57,35 @@ namespace DDDungeon
         {
             List<Character1> party = new List<Character1>();
             string[] playerClasses = { "Wizard", "Fighter", "Rougue","Druid" };
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
-                int randomIndex = new Random().Next(0, playerClasses.Length);
-                if (playerClasses[randomIndex] == "Wizard")
+                //checks if wizard is in the party
+                if (i == 0)
                 {
                     Wizard playerWizard = new Wizard();
                     Character1 player = new Character1(playerWizard.ClassName, playerWizard.Strength, playerWizard.Wisdom, playerWizard.Charisma, playerWizard.Dexterity,
-                     playerWizard.Constitution, 10, 10, false, 0, true, i, playerWizard.Spells);
+                     playerWizard.Constitution, 100, 10, false, 0, true, i, playerWizard.Spells);
                     party.Add(player);
                 }
-                if (playerClasses[randomIndex] == "Rougue")
+                if (i == 1)
                 {
                     Rouge playerRougue = new Rouge();
                     Character1 player = new Character1(playerRougue.ClassName, playerRougue.Strength, playerRougue.Wisdom, playerRougue.Charisma, playerRougue.Dexterity,
-                     playerRougue.Constitution, 10, 10, false, 0, true, i);
+                     playerRougue.Constitution, 100, 10, false, 0, true, i);
                     party.Add(player);
                 }
-                else
+                if (i == 2 )
                 {
-                    Character1 player = new Character1(playerClasses[randomIndex], 10, 10, 10, 10, 10, 1000, 10, false, 0, true, i);
+                    Fighter playerFighter = new Fighter();
+                    Character1 player = new Character1(playerFighter.ClassName, playerFighter.Strength, playerFighter.Wisdom, playerFighter.Charisma, playerFighter.Dexterity,
+                     playerFighter.Constitution, 100, 10, false, 0, true, i);
+                    party.Add(player);
+                }
+                if (i == 3)
+                {
+                    Druid playerDruid = new Druid();
+                    Character1 player = new Character1(playerDruid.ClassName, playerDruid.Strength, playerDruid.Wisdom, playerDruid.Charisma, playerDruid.Dexterity,
+                     playerDruid.Constitution, 100, 10, false, 0, true, i);
                     party.Add(player);
                 }
                 
@@ -84,17 +94,18 @@ namespace DDDungeon
 
         }
 
-        public async void ecounter(List<Character1> party, List<Character1> enemies)
+        public void ecounter(List<Character1> party, List<Character1> enemies)
         {
            
-
             Combat1 combat = new Combat1();
+            IniativeOrder1 iniativeOrder = new IniativeOrder1();
+            List<Character1> io = iniativeOrder.iniativeorder(party, enemies);
+            System.Console.WriteLine("Order of initiative:");
 
             while (party.Count > 0 && enemies.Count > 0)
             {
-                combat.Fight(party, enemies);
-            }
-            
+                combat.Fight(party, enemies,io);
+            } 
 
         }
 
@@ -106,10 +117,37 @@ namespace DDDungeon
 
             for (int i = 0; i < 4; i++)
             {
-                int randomIndex = new Random().Next(0, enemyNames.Length);
-                Character1 enemy = new Character1(enemyNames[randomIndex], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);
+                if (i == 0)
+                {
+                Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);
                 enemies.Add(enemy);
                 Console.WriteLine($"Generated enemy: {enemy.Name}");
+                }
+                if (i == 1)
+                {
+                Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);
+                enemies.Add(enemy);
+                Console.WriteLine($"Generated enemy: {enemy.Name}");
+
+                }
+                if (i == 2)
+                {
+                Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);
+                enemies.Add(enemy);
+                Console.WriteLine($"Generated enemy: {enemy.Name}");
+                }
+                if (i == 3)
+                {
+                Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);  
+                enemies.Add(enemy);
+                Console.WriteLine($"Generated enemy: {enemy.Name}");
+                }
+                if (i == 4)
+                {
+                Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10, true, 0, true, i);
+                enemies.Add(enemy);
+                Console.WriteLine($"Generated enemy: {enemy.Name}");
+                }
             }
             return enemies;
         }
