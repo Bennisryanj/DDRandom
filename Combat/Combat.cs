@@ -2,6 +2,10 @@ using System.Runtime.CompilerServices;
 using Character;
 using IniativeOrder;
 using Attacks;
+using System.Collections;
+using SpellAttacks;
+using PhysicalAttacks;
+using System.Security.Cryptography;
 
 
 namespace Combat
@@ -12,37 +16,59 @@ namespace Combat
 
         public void Fight(List<Character1> party, List<Character1> enemies, List<Character1> iniativeOrder)
         {
-
             IniativeOrder1 IniativeOrder = new IniativeOrder1();
 
             List<Character1> test = IniativeOrder.iniativeorder(party, enemies);
-
+            int attackRoll = 0;
             foreach (Character1 character in test.ToList())
             {
                 if(party.Count == 0 || enemies.Count == 0)
                 {
                     break;
                 }
-                Attack attack = new Attack();
-                int attackRoll = attack.rollToAttack();
+
+                SpellAttack spell = new SpellAttack();
+                PyshicalAttack attack = new PyshicalAttack();
+
+                
+                if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock"  || character.Name == "Druid")
+                {
+                    attackRoll =  spell.rollToAttack() + character.Intelligence;
+                }
+                else
+                {
+                     attackRoll = attack.rollToAttack() + character.Strength;
+                }
                 int enemytarget = new Random().Next(0, enemies.Count);
                 int partytarget = new Random().Next(0, party.Count);
 
                 if (!character.IsMonster)
                 {
-                    if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
+                    if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
                     {
-                        attack.damage(enemies[enemytarget]);
-                        System.Console.WriteLine($"{character.Name} attacks {enemies[enemytarget].Name} for {attack.damage(enemies[enemytarget])} damage!");
-                        
+                        if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
+                        {
+                            int damage = spell.damage(character,enemies[enemytarget],character.Spells[0]);
+                            string spellname = character.Spells[0];
+                            System.Console.WriteLine($"The {character.Name} casts {spellname} on {enemies[enemytarget].Name} for {damage} damage!");
+                        }
                     }
+                    else
+                    {
+                        if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
+                        {
+                             int physicaldamage = attack.damage(character,enemies[enemytarget], character.Strength);
+                            System.Console.WriteLine($"{character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!");
+                        }
+                    }
+
                 }
                 else
                 {
                     if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
                     {
-                        attack.damage(party[partytarget]);
-                        System.Console.WriteLine($"{character.Name} attacks {party[partytarget].Name} for {attack.damage(party[partytarget])} damage!");
+                        int enemyattack = attack.damage(character,party[partytarget],character.Strength);
+                        System.Console.WriteLine($"{character.Name} attacks {party[partytarget].Name} for {enemyattack} damage!");
                     }
                 }
 
@@ -78,33 +104,7 @@ namespace Combat
                 }
 
             }
-
-
         }
-
-  
-        public int spellAttack(int randomSpell)
-        {
-
-
-            if (randomSpell == 0)
-            {
-                return new Random().Next(1, 10);
-            }
-            else if (randomSpell == 1)
-            {
-                return new Random().Next(1, 6);
-            }
-            else if (randomSpell == 2)
-            {
-                return new Random().Next(1, 12);
-            }
-            else
-            {
-                return new Random().Next(1, 20);
-            }
-        }
-
 
     }
 }

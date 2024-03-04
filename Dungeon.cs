@@ -64,7 +64,7 @@ namespace DDDungeon
                 {
                     Wizard playerWizard = new Wizard();
                     Character1 player = new Character1(playerWizard.ClassName, playerWizard.Strength, playerWizard.Wisdom, playerWizard.Charisma, playerWizard.Dexterity,
-                     playerWizard.Constitution, 100, 10, false, 0, true, i, playerWizard.Spells);
+                     playerWizard.Constitution,playerWizard.Intelligence, 100, 10, false, 0, true, i, playerWizard.Spells);
                     party.Add(player);
                 }
                 if (i == 1)

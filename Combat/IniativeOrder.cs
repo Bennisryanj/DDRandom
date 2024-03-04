@@ -12,13 +12,14 @@ namespace IniativeOrder
             Random rnd = new Random();
             foreach (Character1 character in party)
             {
-                character.Initiative = rnd.Next(1, 20);
+                character.Initiative = rnd.Next(1, 20) + character.getModifier(character.Dexterity);
             }
             foreach (Character1 character in enemies)
             {
-                character.Initiative = rnd.Next(1, 20);
+                character.Initiative = rnd.Next(1, 20) + character.getModifier(character.Dexterity);
             }
         }
+        
         public List<Character1> iniativeorder(List<Character1> party, List<Character1> enemies)
         {
             List<Character1> iniativeOrder = new List<Character1>();

@@ -1,0 +1,26 @@
+using Character;
+using Attacks;
+
+namespace PhysicalAttacks
+{
+    class PyshicalAttack : Attack
+    {
+        public override int attackRoll { get; set; }
+        public override int damageRoll { get; set; }
+
+        public override int rollToAttack()
+        {
+            Random rnd = new Random();
+            attackRoll = rnd.Next(1, 20);
+            return attackRoll;
+        }
+        public int damage(Character1 attacker, Character1 target, int Strength)
+        {
+            Random rnd = new Random();
+            damageRoll = rnd.Next(1, 8) + Strength;
+            target.HitPoints -= damageRoll;
+            return damageRoll;
+        }
+    }
+
+}

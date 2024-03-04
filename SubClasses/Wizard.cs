@@ -6,7 +6,7 @@ using magic;
 public class Wizard : CharacterClass1
 {
 
-    public List<string> Spells { get; set; } = new List<string> { "Fireball", "Magic Missile", "Lightning Bolt" };
+    public List<string> Spells { get; set; } = new List<string> { "Firebolt", "Magic Missile", "Lightning Bolt" };
     public override string ClassName { get; set;} = "Wizard";
     public override int Strength { get; set; } = 10;
     public override int Dexterity { get; set; } = 10;

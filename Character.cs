@@ -16,6 +16,8 @@ namespace Character
         public int Charisma { get; set; }
         public int Dexterity { get; set; }
         public int Constitution { get; set; }
+
+        public int Intelligence { get; set; }
         public int HitPoints { get; set; }
         public int ArmorClass { get; set; }
         public bool IsMonster { get; set; }
@@ -39,7 +41,7 @@ namespace Character
         // Constitution Modifier
 
 
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0) 
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0) 
         {
             Name = name;
             Strength = strength;
@@ -47,6 +49,7 @@ namespace Character
             Charisma = charisma;
             Dexterity = dexterity;
             Constitution = constitution;
+            Intelligence = intelligence;
             HitPoints = hitPoints;
             ArmorClass = armorClass;
             IsMonster = isMonster;
@@ -56,7 +59,7 @@ namespace Character
         }
 
         //Wizard 
-        public Character1( string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
+        public Character1( string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
         {
             Name = name;
             Strength = strength;
@@ -64,6 +67,7 @@ namespace Character
             Charisma = charisma;
             Dexterity = dexterity;
             Constitution = constitution;
+            Intelligence = intelligence;
             HitPoints = hitPoints;
             ArmorClass = armorClass;
             IsMonster = isMonster;
@@ -130,9 +134,14 @@ namespace Character
             Constitution += 1;
         }
 
-        public static implicit operator List<object>(Character1 v)
+        public int getModifier(int abilityScore)
         {
-            throw new NotImplementedException();
+            return (abilityScore - 10) / 2;
         }
+
+        // public static implicit operator List<object>(Character1 v)
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }
