@@ -1,9 +1,9 @@
 using System;
 using Character;
-using CharacterClass;
+using Characterclass;
 using magic;
 
-public class Fighter : CharacterClass1
+public class Fighter : CharacterClass
 {
 
     public List<string> Spells { get; set; } = null;

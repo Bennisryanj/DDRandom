@@ -1,9 +1,9 @@
 using System;
 using Character;
-using CharacterClass;
+using Characterclass;
 using magic;
 
-public class Wizard : CharacterClass1
+public class Wizard : CharacterClass
 {
 
     public List<string> Spells { get; set; } = new List<string> { "Firebolt", "Magic Missile", "Lightning Bolt" };

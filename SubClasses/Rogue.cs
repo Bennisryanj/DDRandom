@@ -1,8 +1,8 @@
 using System;
 using Character;
-using CharacterClass;
+using Characterclass;
 
-public class Rouge : CharacterClass1
+public class Rouge : CharacterClass
 {
     public override string ClassName { get; set;} = "Rouge";
     public override int Strength { get; set; } = 10;
