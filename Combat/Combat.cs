@@ -22,10 +22,10 @@ namespace Combat
             int attackRoll = 0;
             foreach (Character1 character in test.ToList())
             {
-                if(party.Count == 0 || enemies.Count == 0)
-                {
-                    break;
-                }
+                 if(party.Count == 0 || enemies.Count == 0)
+                 {
+                     break;
+                 }
 
                 SpellAttack spell = new SpellAttack();
                 PyshicalAttack attack = new PyshicalAttack();

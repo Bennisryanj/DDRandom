@@ -1,8 +1,8 @@
 namespace
-CharacterClass
+Characterclass
 {
 
-    public abstract class CharacterClass1
+    public abstract class CharacterClass
     {
         public abstract string ClassName { get; set; }
         public  abstract int Strength { get; set; }

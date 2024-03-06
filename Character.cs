@@ -1,8 +1,9 @@
 using System;
 using System.Dynamic;
 using System.Security.Cryptography;
-using CharacterClass;
+using Characterclass;
 using Microsoft.VisualBasic;
+using Characterclass;
 
 namespace Character
 {
@@ -19,6 +20,8 @@ namespace Character
 
         public int Intelligence { get; set; }
         public int HitPoints { get; set; }
+
+        public int MaxHitPoints { get; set; }
         public int ArmorClass { get; set; }
         public bool IsMonster { get; set; }
         public int Initiative { get; set; }
@@ -41,7 +44,7 @@ namespace Character
         // Constitution Modifier
 
 
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0) 
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0) 
         {
             Name = name;
             Strength = strength;
@@ -51,6 +54,7 @@ namespace Character
             Constitution = constitution;
             Intelligence = intelligence;
             HitPoints = hitPoints;
+            MaxHitPoints = maxHitPoints;
             ArmorClass = armorClass;
             IsMonster = isMonster;
             Initiative = initiative;
@@ -59,7 +63,7 @@ namespace Character
         }
 
         //Wizard 
-        public Character1( string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
+        public Character1( string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
         {
             Name = name;
             Strength = strength;
@@ -69,6 +73,7 @@ namespace Character
             Constitution = constitution;
             Intelligence = intelligence;
             HitPoints = hitPoints;
+            MaxHitPoints = maxHitPoints;
             ArmorClass = armorClass;
             IsMonster = isMonster;
             Initiative = initiative;
@@ -78,7 +83,7 @@ namespace Character
         }
 
         //Rogue
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, bool isHidden = false)
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int maxHitPoints,int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, bool isHidden = false)
         {
             Name = name;
             Strength = strength;
@@ -87,6 +92,7 @@ namespace Character
             Dexterity = dexterity;
             Constitution = constitution;
             HitPoints = hitPoints;
+            MaxHitPoints = maxHitPoints;
             ArmorClass = armorClass;
             IsMonster = isMonster;
             Initiative = initiative;
@@ -121,10 +127,6 @@ namespace Character
 
         public void Levelup()
         {
-            // Add level up logic here
-            // increase hit points by 10
-            // increase armor class by 2
-            // increase strength, wisdom, charisma, dexterity, and constitution by 1
             HitPoints += 10;
             ArmorClass += 2;
             Strength += 1;

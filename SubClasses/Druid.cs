@@ -1,9 +1,9 @@
 using System;
 using Character;
-using CharacterClass;
+using Characterclass;
 using magic;
 
-public class Druid : CharacterClass1
+public class Druid : CharacterClass
 {
 
     public List<string> Spells { get; set; } = new List<string> { "Healing Word", "Med Pack", "Lightning Bolt" };
