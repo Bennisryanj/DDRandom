@@ -4,47 +4,45 @@ using System.Security.Cryptography;
 using Characterclass;
 using Microsoft.VisualBasic;
 using Characterclass;
+using Creatures;
 
 namespace Character
 {
-    public class Character1
+    public class Character1 : Creature
     {
         // Add properties, methods, and fields here
 
-        public string Name { get; set; }
-        public int Strength { get; set; }
-        public int Wisdom { get; set; }
-        public int Charisma { get; set; }
-        public int Dexterity { get; set; }
-        public int Constitution { get; set; }
+        public override string Name { get; set; }
+        public override int Strength { get; set; }
+        public override int Wisdom { get; set; }
+        public override int Charisma { get; set; }
+        public override int Dexterity { get; set; }
+        public override int Constitution { get; set; }
+        public override int Intelligence { get; set; }
+        public override int HitPoints { get; set; }
+        public override int MaxHitPoints { get; set; }
+        public override int ArmorClass { get; set; }
+        public override bool IsMonster { get; set; } = false;
+        public override int Initiative { get; set; }
+        public override bool IsAlive { get; set; } = true;
+        public override int PartyIndex { get; set; }
+        public override List<string> Spells { get; set; }
+        public override bool IsHidden { get; set; } = false;
 
-        public int Intelligence { get; set; }
-        public int HitPoints { get; set; }
+        public override int WisdomModifier {get;set;} 
+        public override int ArmorClassModifier { get; set; }
+        public override int HitPointsModifier {get;set;}
+        public override int CharismaModifier { get; set; }
+        public override int StrengthModifier { get; set; }
+        public override int IntelligenceModifier { get; set; }
+        public override int DexterityModifier { get; set; }
+        public override int InitiativeModifier { get; set; }
+        public override int ConstitutionModifier { get; set; }
+        public override int MaxHitPointsModifier { get; set; }
 
-        public int MaxHitPoints { get; set; }
-        public int ArmorClass { get; set; }
-        public bool IsMonster { get; set; }
-        public int Initiative { get; set; }
-        public bool IsAlive { get; set; } = true;
+    
 
-        public int PartyIndex { get; set; }
-
-        public List<string> Spells { get; set; }
-
-        public bool IsHidden { get; set; } = false;
-
-
-
-
-        // Need to add properties for the following:
-        // Strength Modifier 
-        // Wisdom Modifier
-        // Charisma Modifier
-        // Dexterity Modifier
-        // Constitution Modifier
-
-
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0) 
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0)
         {
             Name = name;
             Strength = strength;
@@ -63,7 +61,7 @@ namespace Character
         }
 
         //Wizard 
-        public Character1( string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, List<string> spells = null)
         {
             Name = name;
             Strength = strength;
@@ -83,7 +81,7 @@ namespace Character
         }
 
         //Rogue
-        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int maxHitPoints,int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, bool isHidden = false)
+        public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0, bool isHidden = false)
         {
             Name = name;
             Strength = strength;
@@ -103,9 +101,7 @@ namespace Character
 
         //Fighter
 
-
-               
-        public void Die( bool isMonster, string name, int partyindex, List<Character1> party, List<Character1> enemies, List<Character1> iniativeOrder)
+        public void Die(bool isMonster, string name, int partyindex, List<Character1> party, List<Character1> enemies, List<Character1> iniativeOrder)
         {
             if (isMonster)
             {
@@ -113,7 +109,7 @@ namespace Character
                 Console.WriteLine($"{enemies[partyindex].Name} has been defeated!");
                 enemies.Remove(enemies[partyindex]);
                 iniativeOrder.Remove(enemies[partyindex]);
-                
+
             }
             else
             {
@@ -140,10 +136,5 @@ namespace Character
         {
             return (abilityScore - 10) / 2;
         }
-
-        // public static implicit operator List<object>(Character1 v)
-        // {
-        //     throw new NotImplementedException();
-        // }
     }
 }

@@ -1,6 +1,7 @@
 using Character;
 using Attacks;
 using magic;
+using Creatures;
 
 namespace SpellAttacks 
 {
@@ -17,7 +18,7 @@ namespace SpellAttacks
         }
 
 
-        public int damage(Character1 attacker,Character1 target, string spellName)
+        public int damage(Creature attacker,Creature target, string spellName)
         {
             Random rnd = new Random();
             damageRoll = spellDamage(spellName) + attacker.Intelligence;

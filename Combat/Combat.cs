@@ -6,6 +6,8 @@ using System.Collections;
 using SpellAttacks;
 using PhysicalAttacks;
 using System.Security.Cryptography;
+using Enemy;
+using Creatures;
 
 
 namespace Combat
@@ -14,13 +16,13 @@ namespace Combat
     {
 
 
-        public void Fight(List<Character1> party, List<Character1> enemies, List<Character1> iniativeOrder)
+        public void Fight(List<Character1> party, List<enemyClass> enemies, List<Creature> iniativeOrder)
         {
             IniativeOrder1 IniativeOrder = new IniativeOrder1();
 
-            List<Character1> test = IniativeOrder.iniativeorder(party, enemies);
+            List<Creature> test = IniativeOrder.iniativeorder(party, enemies);
             int attackRoll = 0;
-            foreach (Character1 character in test.ToList())
+            foreach (Creature character in test.ToList())
             {
                  if(party.Count == 0 || enemies.Count == 0)
                  {
@@ -74,7 +76,7 @@ namespace Combat
 
                 if (party[partytarget].HitPoints <= 0 && party[partytarget].IsAlive == true)
                 {
-                    List<Character1> diedThisTurn = new List<Character1>() { party[partytarget] };
+                    List<Creature> diedThisTurn = new List<Creature>() { party[partytarget] };
 
                     iniativeOrder.Remove(party[partytarget]);
 
@@ -92,13 +94,13 @@ namespace Combat
                 else if (enemies[enemytarget].HitPoints <= 0 && enemies[enemytarget].IsAlive == true)
                 {
                     iniativeOrder.Remove(enemies[enemytarget]);
-                    List<Character1> diedThisTurn = new List<Character1>() { enemies[enemytarget] };
+                    List<Creature> diedThisTurn = new List<Creature>() { enemies[enemytarget] };
 
-                    foreach (Character1 character1 in diedThisTurn.ToList())
+                    foreach (enemyClass enemy in diedThisTurn.ToList())
                     {
-                            System.Console.WriteLine($"{character1.Name} has been defeated!");
-                            enemies.Remove(character1);
-                            character1.IsAlive = false;
+                            System.Console.WriteLine($"{enemy.Name} has been defeated!");
+                            enemies.Remove(enemy);
+                            enemy.IsAlive = false;
                     }
 
                 }

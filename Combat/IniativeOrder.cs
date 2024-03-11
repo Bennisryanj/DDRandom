@@ -1,29 +1,31 @@
 using System;
 using System.Collections.Generic;
 using Character;
+using Enemy;
+using Creatures;
 
 namespace IniativeOrder
 {
     public class IniativeOrder1
     {
 
-        public void rollInitiative(List<Character1> party, List<Character1> enemies)
+        public void rollInitiative(List<Character1> party, List<enemyClass> enemies)
         {
             Random rnd = new Random();
             foreach (Character1 character in party)
             {
                 character.Initiative = rnd.Next(1, 20) + character.getModifier(character.Dexterity);
             }
-            foreach (Character1 character in enemies)
+            foreach (enemyClass enemy in enemies)
             {
-                character.Initiative = rnd.Next(1, 20) + character.getModifier(character.Dexterity);
+                enemy.Initiative = rnd.Next(1, 20) + enemy.getModifier(enemy.Dexterity);
             }
         }
         
-        public List<Character1> iniativeorder(List<Character1> party, List<Character1> enemies)
+        public List<Creature> iniativeorder(List<Character1> party, List<enemyClass> enemies)
         {
-            List<Character1> iniativeOrder = new List<Character1>();
-            List<Character1> temp = new List<Character1>();
+            List<Creature> iniativeOrder = new List<Creature>();
+            List<Creature> temp = new List<Creature>();
             temp.AddRange(party);
             temp.AddRange(enemies);
             temp.Sort((x, y) => y.Initiative.CompareTo(x.Initiative));
