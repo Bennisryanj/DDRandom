@@ -1,5 +1,6 @@
 using Character;
 using Attacks;
+using Creatures;
 
 namespace PhysicalAttacks
 {
@@ -14,7 +15,7 @@ namespace PhysicalAttacks
             attackRoll = rnd.Next(1, 20);
             return attackRoll;
         }
-        public int damage(Character1 attacker, Character1 target, int Strength)
+        public int damage(Creature attacker,Creature target, int Strength)
         {
             Random rnd = new Random();
             damageRoll = rnd.Next(1, 8) + Strength;

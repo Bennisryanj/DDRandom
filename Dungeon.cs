@@ -1,11 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
 using Character;
 using Combat;
+using Enemy;
 using IniativeOrder;
 using PartyGenerator;
+using EnemyGenerator;
+using Creatures;
 
 namespace DDDungeon
 {
@@ -28,6 +27,7 @@ namespace DDDungeon
             // string[] playerNames = { "Player1", "Player2", "Player3" };
             // int randomIndex = new Random().Next(0, playerNames.Length);
              Partygenerator  partyGenerator = new Partygenerator();
+             
             List<Character1> party = partyGenerator.generateParty();
             
 
@@ -40,13 +40,14 @@ namespace DDDungeon
 
             while (party.Count > 0)
             {
-                List<Character1> enemies = GenerateEnemies();
+                EnemyGeneratorClass enemyGenerator = new EnemyGeneratorClass();
+                List<enemyClass> enemies = enemyGenerator.generateEnemies(roomNumber);
                 System.Console.WriteLine($"Room number: {roomNumber}");
                 while (party.Count > 0 && enemies.Count > 0)
                 {
                     ecounter(party, enemies);
                     roomNumber += 1;
-                    if (roomNumber % 5 == 0 && roomNumber % 10 != 0)
+                    if (roomNumber % 3 == 0 && roomNumber % 6 != 0)
                     {
                         shortRest(party);
                         System.Console.WriteLine("You have taken a short rest!");
@@ -55,7 +56,7 @@ namespace DDDungeon
                             System.Console.WriteLine($"{character.Name} has {character.HitPoints} hitpoints!");
                         }
                     }
-                    else if (roomNumber % 10 == 0)
+                    else if (roomNumber % 6 == 0)
                     {
                         longRest(party);
                     }
@@ -75,15 +76,12 @@ namespace DDDungeon
 
         }
 
-
-       
-
-        public void ecounter(List<Character1> party, List<Character1> enemies)
+        public void ecounter(List<Character1> party, List<enemyClass> enemies)
         {
 
             Combat1 combat = new Combat1();
             IniativeOrder1 iniativeOrder = new IniativeOrder1();
-            List<Character1> io = iniativeOrder.iniativeorder(party, enemies);
+            List<Creature> io = iniativeOrder.iniativeorder(party, enemies);
             System.Console.WriteLine("Order of initiative:");
 
             while (party.Count > 0 && enemies.Count > 0)
@@ -91,47 +89,6 @@ namespace DDDungeon
                 combat.Fight(party, enemies, io);
             }
 
-        }
-
-        public List<Character1> GenerateEnemies()
-        {
-            string[] enemyNames = { "Little Baby Goblin", "Big Daddy Goblin", "Goblin King", "Goblin Queen", "Goblin Prince", "Goblin Princess", "Goblin Knight", "Goblin Wizard", "Goblin Sorcerer", "Goblin Cleric" };
-
-            for (int i = 0; i < 4; i++)
-            {
-                if (i == 0)
-                {
-                    Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10,10, true, 0, true, i);
-                    enemies.Add(enemy);
-                    Console.WriteLine($"Generated enemy: {enemy.Name}");
-                }
-                if (i == 1)
-                {
-                    Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10,10, true, 0, true, i);
-                    enemies.Add(enemy);
-                    Console.WriteLine($"Generated enemy: {enemy.Name}");
-
-                }
-                if (i == 2)
-                {
-                    Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10,10, true, 0, true, i);
-                    enemies.Add(enemy);
-                    Console.WriteLine($"Generated enemy: {enemy.Name}");
-                }
-                if (i == 3)
-                {
-                    Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10,10, true, 0, true, i);
-                    enemies.Add(enemy);
-                    Console.WriteLine($"Generated enemy: {enemy.Name}");
-                }
-                if (i == 4)
-                {
-                    Character1 enemy = new Character1(enemyNames[i], 10, 10, 10, 10, 10, 1, 10,10, true, 0, true, i);
-                    enemies.Add(enemy);
-                    Console.WriteLine($"Generated enemy: {enemy.Name}");
-                }
-            }
-            return enemies;
         }
 
         public void shortRest(List<Character1> party)
