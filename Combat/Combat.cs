@@ -48,6 +48,13 @@ namespace Combat
                 {
                     if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
                     {
+                        if (character.Name == "Druid" && party[partytarget].IsAlive == true)
+                        {
+                            int heal = spell.heal(character, party[partytarget], character.Spells[0]);
+                            System.Console.WriteLine($"{character.Name} heals {party[partytarget].Name} for {heal} hitpoints!");
+                        }
+
+
                         if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
                         {
                             int damage = spell.damage(character,enemies[enemytarget],character.Spells[0]);
@@ -86,9 +93,6 @@ namespace Combat
                             party.Remove(character1);
                             character1.IsAlive = false;
 
-                        
-                        
-                        
                     }
                 }
                 else if (enemies[enemytarget].HitPoints <= 0 && enemies[enemytarget].IsAlive == true)

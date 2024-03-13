@@ -40,6 +40,8 @@ namespace Character
         public override int ConstitutionModifier { get; set; }
         public override int MaxHitPointsModifier { get; set; }
 
+        public int Level { get; set; } = 1;
+
     
 
         public Character1(string name, int strength, int wisdom, int charisma, int dexterity, int constitution, int intelligence, int hitPoints, int maxHitPoints, int armorClass, bool isMonster, int initiative = 0, bool isAlive = true, int partyIndex = 0)

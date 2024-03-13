@@ -7,6 +7,8 @@ namespace Attacks
         public abstract int attackRoll {get; set;}
         public abstract int damageRoll {get; set;}
 
+        public abstract int healRoll {get; set;}
+
         public abstract int rollToAttack();
     }
 }

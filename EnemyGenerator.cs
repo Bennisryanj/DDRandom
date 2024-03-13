@@ -9,10 +9,13 @@ namespace EnemyGenerator
 
         private double challengeRating {get; set;} = 0;
 
-        public List<enemyClass> generateEnemies(int floorNumber)
+        public List<enemyClass> generateEnemies(int partyaverageLevel)
         {
             List<enemyClass> enemies = new List<enemyClass>();
-            while (challengeRating <= 1 || (enemies.Count == 0))
+
+            double calculatedChallengeRating = ((double)partyaverageLevel * .6635) -.305;
+
+            while (challengeRating <= calculatedChallengeRating || (enemies.Count == 0))
             {
                 enemies.Add(generateGoblin());
                 challengeRating += enemies[enemies.Count - 1].challengeRating;

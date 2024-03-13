@@ -24,30 +24,29 @@ namespace DDDungeon
 
         public void Start()
         {
-            // string[] playerNames = { "Player1", "Player2", "Player3" };
-            // int randomIndex = new Random().Next(0, playerNames.Length);
-             Partygenerator  partyGenerator = new Partygenerator();
-             
+            Partygenerator  partyGenerator = new Partygenerator();             
             List<Character1> party = partyGenerator.generateParty();
             
-
-            // set up the code so it will finish a room and then ask the player if they want to continue
-            // if they do, generate a new room with new enemies, keeping the same party
-            // if they don't, end the game
             Console.WriteLine($"Welcome to the Dungeon!");
-            Console.WriteLine("You are now in a room with a monster!");
-
-
-            while (party.Count > 0)
+            System.Console.WriteLine("The Party is made up of the following characters:");
+            foreach (Character1 character in party)
             {
+                System.Console.WriteLine($"{character.Name} has {character.HitPoints} hitpoints!");
+            }
+            
+            while (party.Count > 0 && roomNumber < 10000)
+            {
+
+                int partyLevelAverage = getPartyLevelAverage(party);   
                 EnemyGeneratorClass enemyGenerator = new EnemyGeneratorClass();
-                List<enemyClass> enemies = enemyGenerator.generateEnemies(roomNumber);
+                List<enemyClass> enemies = enemyGenerator.generateEnemies(partyLevelAverage);
                 System.Console.WriteLine($"Room number: {roomNumber}");
                 while (party.Count > 0 && enemies.Count > 0)
                 {
+                    Console.WriteLine("You are now in a room with a monster!");
                     ecounter(party, enemies);
                     roomNumber += 1;
-                    if (roomNumber % 3 == 0 && roomNumber % 6 != 0)
+                    if (roomNumber % 3 == 0 && roomNumber % 6 != 0 && party.Count > 0)
                     {
                         shortRest(party);
                         System.Console.WriteLine("You have taken a short rest!");
@@ -56,9 +55,13 @@ namespace DDDungeon
                             System.Console.WriteLine($"{character.Name} has {character.HitPoints} hitpoints!");
                         }
                     }
-                    else if (roomNumber % 6 == 0)
+                    else if (roomNumber % 6 == 0 && party.Count > 0)
                     {
                         longRest(party);
+                        foreach (Character1 character in party)
+                        {
+                            character.Level = Levelup(character.Level);
+                        }
                     }
                 }
                 if (party.Count == 0)
@@ -118,6 +121,21 @@ namespace DDDungeon
                     character.HitPoints = character.MaxHitPoints;
                 }
             }
+        }
+
+        public int getPartyLevelAverage(List<Character1> party)
+        {
+            int totalLevel = 0;
+            foreach (Character1 character in party)
+            {
+                totalLevel += character.Level;
+            }
+            return totalLevel / party.Count;
+        }
+
+        public int Levelup(int level)
+        {
+            return level + 1;
         }
     }
 

@@ -21,7 +21,7 @@ namespace PartyGenerator
             List<Character1> party = new List<Character1>();
             string[] playerClasses = { "Wizard", "Fighter", "Rougue", "Druid" };
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 //checks if wizard is in the party
                 if (i == 0)
@@ -98,12 +98,13 @@ namespace PartyGenerator
             Druid playerDruid = new Druid();
             int raceIndex = new Random().Next(0, playerRace.Length);
             Character1 player = new Character1(playerDruid.ClassName,
-             playerDruid.Strength + playerRace[raceIndex].StrengthModifier,
-             playerDruid.Wisdom + playerRace[raceIndex].WisdomModifier,
-             playerDruid.Charisma + playerRace[raceIndex].CharismaModifier,
-              playerDruid.Dexterity + playerRace[raceIndex].DexterityModifier,
-             playerDruid.Constitution + playerRace[raceIndex].ConstitutionModifier,
-              100, 100, 17, false, 0, true, partyIndex);
+                playerDruid.Strength + playerRace[raceIndex].StrengthModifier,
+                playerDruid.Wisdom + playerRace[raceIndex].WisdomModifier,
+                playerDruid.Charisma + playerRace[raceIndex].CharismaModifier,
+                playerDruid.Dexterity + playerRace[raceIndex].DexterityModifier,
+                playerDruid.Constitution + playerRace[raceIndex].ConstitutionModifier,
+                playerDruid.Intelligence + playerRace[raceIndex].IntelligenceModifier,
+                100, 100, 10 + playerRace[raceIndex].DexterityModifier , false, 0, true, partyIndex, playerDruid.Spells);
             return player;
         }
     }

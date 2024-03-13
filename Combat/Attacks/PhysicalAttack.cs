@@ -8,6 +8,7 @@ namespace PhysicalAttacks
     {
         public override int attackRoll { get; set; }
         public override int damageRoll { get; set; }
+        public override int healRoll { get; set; }
 
         public override int rollToAttack()
         {

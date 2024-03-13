@@ -6,7 +6,7 @@ using magic;
 public class Druid : CharacterClass
 {
 
-    public List<string> Spells { get; set; } = new List<string> { "Healing Word", "Med Pack", "Lightning Bolt" };
+    public List<string> Spells { get; set; } = new List<string> { "HealingWord", "Med Pack", "Lightning Bolt" };
     public override string ClassName { get; set;} = "Druid";
     public override int Strength { get; set; } = 10;
     public override int Dexterity { get; set; } = 10;

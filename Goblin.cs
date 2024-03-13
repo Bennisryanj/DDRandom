@@ -41,7 +41,10 @@ namespace EnemyTypeGoblin
 
         public string nameGoblin()
             {
-                return "Goblin";
+                Random rnd = new Random();
+                int name = rnd.Next(1, 4);
+                List<string> goblinNames = new List<string> {"Gobbo", "Gob", "Goblin", "Gobgob", "Gobgoblin"};
+                return goblinNames[name];
             }
     }   
 

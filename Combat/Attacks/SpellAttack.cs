@@ -10,6 +10,8 @@ namespace SpellAttacks
         public override int attackRoll {get; set;}
         public override int damageRoll {get; set;}
 
+        public override int healRoll {get; set;}
+
         public override int rollToAttack()
         {
             Random rnd = new Random();
@@ -26,6 +28,13 @@ namespace SpellAttacks
             return damageRoll;
         }
 
+        public int heal(Creature healer, Creature target, string spellName)
+        {
+            Random rnd = new Random();
+            healRoll = spellHeal(spellName) + healer.Wisdom;
+            target.HitPoints += healRoll;
+            return healRoll;
+        }
 
         public int spellDamage(string spellName)
         {
@@ -42,6 +51,18 @@ namespace SpellAttacks
                 spellDamage = magicMissile.Damage;
             }
             return spellDamage;
+        }
+
+        public int spellHeal(string spellName)
+        {
+            int spellHeal = 0;
+            Spell spell = new Spell();
+            if (spellName == "HealingWord")
+            {
+                HealingWord healingWord = new HealingWord();
+                spellHeal = healingWord.Damage;
+            }
+            return spellHeal;
         }
     }
 

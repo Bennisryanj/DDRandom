@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj": {}
+    "C:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj": {}
   },
   "projects": {
-    "c:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj": {
+    "C:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj",
+        "projectUniqueName": "C:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj",
         "projectName": "DDRandom",
-        "projectPath": "c:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj",
+        "projectPath": "C:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj",
         "packagesPath": "C:\\Users\\bennisry\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\bennisry\\Desktop\\DDRandom\\obj\\",
+        "outputPath": "C:\\Users\\bennisry\\Desktop\\DDRandom\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bennisry\\AppData\\Roaming\\NuGet\\NuGet.Config",
