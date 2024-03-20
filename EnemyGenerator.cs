@@ -1,4 +1,7 @@
 using Enemy;
+using Creatures;
+using CreatureFactories;
+
 
 namespace EnemyGenerator
 {
@@ -9,9 +12,9 @@ namespace EnemyGenerator
 
         private double challengeRating {get; set;} = 0;
 
-        public List<enemyClass> generateEnemies(int partyaverageLevel)
+        public List<Creature> generateEnemies(int partyaverageLevel)
         {
-            List<enemyClass> enemies = new List<enemyClass>();
+            List<Creature> enemies = new List<Creature>();
 
             double calculatedChallengeRating = ((double)partyaverageLevel * .6635) -.305;
 
@@ -25,10 +28,12 @@ namespace EnemyGenerator
 
 
 
-        public Enemy.enemyClass generateGoblin()
+        public Creature generateGoblin()
         {
-            EnemyTypeGoblin.Goblin goblin = new EnemyTypeGoblin.Goblin();
-            goblin.Name = goblin.nameGoblin();
+            CreatureFactory creatureFactory = new CreatureFactory();
+
+            var goblin = creatureFactory.CreateGoblin();
+            
             return goblin;
         }
     }

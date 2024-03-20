@@ -31,6 +31,12 @@ public abstract class Creature
 
     public abstract bool IsMonster { get; set; }
 
+    public abstract double challengeRating { get; set; }
+
+     public abstract int getModifier( int abilityScore);
+
+    public abstract int Level { get; set; } 
+
 }
 
 }
