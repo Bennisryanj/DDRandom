@@ -1,5 +1,4 @@
 using System.Runtime.CompilerServices;
-using Character;
 using IniativeOrder;
 using Attacks;
 using System.Collections;
@@ -16,7 +15,7 @@ namespace Combat
     {
 
 
-        public void Fight(List<Character1> party, List<enemyClass> enemies, List<Creature> iniativeOrder)
+        public void Fight(List<Creature> party, List<Creature> enemies, List<Creature> iniativeOrder)
         {
             IniativeOrder1 IniativeOrder = new IniativeOrder1();
 
@@ -35,11 +34,11 @@ namespace Combat
                 
                 if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock"  || character.Name == "Druid")
                 {
-                    attackRoll =  spell.rollToAttack() + character.Intelligence;
+                    attackRoll =  spell.rollToAttack() + character.IntelligenceModifier;
                 }
                 else
                 {
-                     attackRoll = attack.rollToAttack() + character.Strength;
+                     attackRoll = attack.rollToAttack() + character.StrengthModifier;
                 }
                 int enemytarget = new Random().Next(0, enemies.Count);
                 int partytarget = new Random().Next(0, party.Count);
@@ -48,14 +47,14 @@ namespace Combat
                 {
                     if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
                     {
-                        if (character.Name == "Druid" && party[partytarget].IsAlive == true)
+                        if (character.Name == "Druid" && party[partytarget].IsAlive == true && party[partytarget].IsMonster == false)
                         {
                             int heal = spell.heal(character, party[partytarget], character.Spells[0]);
                             System.Console.WriteLine($"{character.Name} heals {party[partytarget].Name} for {heal} hitpoints!");
                         }
 
 
-                        if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
+                        if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true )
                         {
                             int damage = spell.damage(character,enemies[enemytarget],character.Spells[0]);
                             string spellname = character.Spells[0];
@@ -66,7 +65,7 @@ namespace Combat
                     {
                         if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
                         {
-                             int physicaldamage = attack.damage(character,enemies[enemytarget], character.Strength);
+                             int physicaldamage = attack.damage(character,enemies[enemytarget], character.StrengthModifier);
                             System.Console.WriteLine($"{character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!");
                         }
                     }
@@ -76,7 +75,7 @@ namespace Combat
                 {
                     if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
                     {
-                        int enemyattack = attack.damage(character,party[partytarget],character.Strength);
+                        int enemyattack = attack.damage(character,party[partytarget],character.StrengthModifier);
                         System.Console.WriteLine($"{character.Name} attacks {party[partytarget].Name} for {enemyattack} damage!");
                     }
                 }
@@ -87,7 +86,7 @@ namespace Combat
 
                     iniativeOrder.Remove(party[partytarget]);
 
-                    foreach (Character1 character1 in diedThisTurn.ToList())
+                    foreach (Creature character1 in diedThisTurn.ToList())
                     {
                         System.Console.WriteLine($"{character1.Name} has been defeated!");
                             party.Remove(character1);
@@ -100,7 +99,7 @@ namespace Combat
                     iniativeOrder.Remove(enemies[enemytarget]);
                     List<Creature> diedThisTurn = new List<Creature>() { enemies[enemytarget] };
 
-                    foreach (enemyClass enemy in diedThisTurn.ToList())
+                    foreach (Creature enemy in diedThisTurn.ToList())
                     {
                             System.Console.WriteLine($"{enemy.Name} has been defeated!");
                             enemies.Remove(enemy);

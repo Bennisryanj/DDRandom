@@ -1,23 +1,23 @@
-using Character;
 using Combat;
 using Enemy;
 using IniativeOrder;
 using PartyGenerator;
 using EnemyGenerator;
 using Creatures;
+using CreatureFactories;
 
 namespace DDDungeon
 {
     public class Dungeon
     {
-        private List<Character1> enemies;
+        private List<Creature> enemies;
         private bool playerAlive;
 
         private int roomNumber;
 
         public Dungeon()
         {
-            enemies = new List<Character1>();
+            enemies = new List<Creature>();
             playerAlive = true;
         }
 
@@ -25,11 +25,11 @@ namespace DDDungeon
         public void Start()
         {
             Partygenerator  partyGenerator = new Partygenerator();             
-            List<Character1> party = partyGenerator.generateParty();
+            List<Creature> party = partyGenerator.generateParty();
             
             Console.WriteLine($"Welcome to the Dungeon!");
             System.Console.WriteLine("The Party is made up of the following characters:");
-            foreach (Character1 character in party)
+            foreach (Creature character in party)
             {
                 System.Console.WriteLine($"{character.Name} has {character.HitPoints} hitpoints!");
             }
@@ -37,9 +37,15 @@ namespace DDDungeon
             while (party.Count > 0 && roomNumber < 10000)
             {
 
+               EnemyFactory factory = new EnemyFactory();
+               
+               var gob = factory.CreateGoblin();
+
+               gob.Name = "Goblin"; 
+
                 int partyLevelAverage = getPartyLevelAverage(party);   
                 EnemyGeneratorClass enemyGenerator = new EnemyGeneratorClass();
-                List<enemyClass> enemies = enemyGenerator.generateEnemies(partyLevelAverage);
+                List<Creature> enemies = enemyGenerator.generateEnemies(partyLevelAverage);
                 System.Console.WriteLine($"Room number: {roomNumber}");
                 while (party.Count > 0 && enemies.Count > 0)
                 {
@@ -50,7 +56,7 @@ namespace DDDungeon
                     {
                         shortRest(party);
                         System.Console.WriteLine("You have taken a short rest!");
-                        foreach (Character1 character in party)
+                        foreach (Creature character in party)
                         {
                             System.Console.WriteLine($"{character.Name} has {character.HitPoints} hitpoints!");
                         }
@@ -58,7 +64,7 @@ namespace DDDungeon
                     else if (roomNumber % 6 == 0 && party.Count > 0)
                     {
                         longRest(party);
-                        foreach (Character1 character in party)
+                        foreach (Creature character in party)
                         {
                             character.Level = Levelup(character.Level);
                         }
@@ -79,7 +85,7 @@ namespace DDDungeon
 
         }
 
-        public void ecounter(List<Character1> party, List<enemyClass> enemies)
+        public void ecounter(List<Creature> party, List<Creature> enemies)
         {
 
             Combat1 combat = new Combat1();
@@ -94,9 +100,9 @@ namespace DDDungeon
 
         }
 
-        public void shortRest(List<Character1> party)
+        public void shortRest(List<Creature> party)
         {
-            foreach (Character1 character in party)
+            foreach (Creature character in party)
             {
                 if (character.IsAlive)
                 {
@@ -112,9 +118,9 @@ namespace DDDungeon
             }
         }
 
-        public void longRest(List<Character1> party)
+        public void longRest(List<Creature> party)
         {
-            foreach (Character1 character in party)
+            foreach (Creature character in party)
             {
                 if (character.IsAlive)
                 {
@@ -123,10 +129,10 @@ namespace DDDungeon
             }
         }
 
-        public int getPartyLevelAverage(List<Character1> party)
+        public int getPartyLevelAverage(List<Creature> party)
         {
             int totalLevel = 0;
-            foreach (Character1 character in party)
+            foreach (Creature character in party)
             {
                 totalLevel += character.Level;
             }
