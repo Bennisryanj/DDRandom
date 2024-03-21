@@ -13,7 +13,8 @@ namespace Combat
 {
     public class Combat1
     {
-
+        SpellAttack spell = new SpellAttack();
+        PyshicalAttack attack = new PyshicalAttack();
 
         public void Fight(List<Creature> party, List<Creature> enemies, List<Creature> iniativeOrder)
         {
@@ -27,12 +28,69 @@ namespace Combat
                  {
                      break;
                  }
+                attackRoll = getAttackRoll(character, attackRoll);
+                int enemytarget = new Random().Next(0, enemies.Count);
+                int partytarget = new Random().Next(0, party.Count);
 
-                SpellAttack spell = new SpellAttack();
-                PyshicalAttack attack = new PyshicalAttack();
+                if (!character.IsMonster)
+                {
+                    playerAttack(character, party, enemies, attackRoll, enemytarget, partytarget);
 
-                
-                if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock"  || character.Name == "Druid")
+                }
+                else
+                {
+                    if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
+                    {
+                        int enemyattack = attack.damage(character,party[partytarget],character.StrengthModifier);
+                        System.Console.WriteLine($"{character.Name} attacks {party[partytarget].Name} for {enemyattack} damage!");
+                    }
+                }
+
+                if (party[partytarget].HitPoints <= 0 && party[partytarget].IsAlive == true)
+                {
+                    playerdied(party, iniativeOrder, partytarget);
+
+                }
+                else if (enemies[enemytarget].HitPoints <= 0 && enemies[enemytarget].IsAlive == true)
+                {
+                    enemydied(enemies, iniativeOrder, enemytarget);
+       
+                }
+            }
+        }
+
+        public void playerdied(List<Creature> party, List<Creature> iniativeOrder, int partytarget)
+        {
+                List<Creature> diedThisTurn = new List<Creature>() { party[partytarget] };
+
+                    iniativeOrder.Remove(party[partytarget]);
+
+                    foreach (Creature character1 in diedThisTurn.ToList())
+                    {
+                        System.Console.WriteLine($"{character1.Name} has been defeated!");
+                            party.Remove(character1);
+                            character1.IsAlive = false;
+
+                    }
+
+        }
+
+        public void enemydied(List<Creature> enemies, List<Creature> iniativeOrder, int enemytarget)
+        {
+                         iniativeOrder.Remove(enemies[enemytarget]);
+                    List<Creature> diedThisTurn = new List<Creature>() { enemies[enemytarget] };
+
+                    foreach (Creature enemy in diedThisTurn.ToList())
+                    {
+                            System.Console.WriteLine($"{enemy.Name} has been defeated!");
+                            enemies.Remove(enemy);
+                            enemy.IsAlive = false;
+                    }
+        }
+
+        public int getAttackRoll(Creature character, int attackRoll)
+        {
+             if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock"  || character.Name == "Druid")
                 {
                     attackRoll =  spell.rollToAttack() + character.IntelligenceModifier;
                 }
@@ -40,12 +98,12 @@ namespace Combat
                 {
                      attackRoll = attack.rollToAttack() + character.StrengthModifier;
                 }
-                int enemytarget = new Random().Next(0, enemies.Count);
-                int partytarget = new Random().Next(0, party.Count);
+                return attackRoll;
+        }
 
-                if (!character.IsMonster)
-                {
-                    if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
+        public void playerAttack(Creature character, List<Creature> party, List<Creature> enemies, int attackRoll, int enemytarget, int partytarget)
+        {
+            if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
                     {
                         if (character.Name == "Druid" && party[partytarget].IsAlive == true && party[partytarget].IsMonster == false)
                         {
@@ -69,46 +127,6 @@ namespace Combat
                             System.Console.WriteLine($"{character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!");
                         }
                     }
-
-                }
-                else
-                {
-                    if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
-                    {
-                        int enemyattack = attack.damage(character,party[partytarget],character.StrengthModifier);
-                        System.Console.WriteLine($"{character.Name} attacks {party[partytarget].Name} for {enemyattack} damage!");
-                    }
-                }
-
-                if (party[partytarget].HitPoints <= 0 && party[partytarget].IsAlive == true)
-                {
-                    List<Creature> diedThisTurn = new List<Creature>() { party[partytarget] };
-
-                    iniativeOrder.Remove(party[partytarget]);
-
-                    foreach (Creature character1 in diedThisTurn.ToList())
-                    {
-                        System.Console.WriteLine($"{character1.Name} has been defeated!");
-                            party.Remove(character1);
-                            character1.IsAlive = false;
-
-                    }
-                }
-                else if (enemies[enemytarget].HitPoints <= 0 && enemies[enemytarget].IsAlive == true)
-                {
-                    iniativeOrder.Remove(enemies[enemytarget]);
-                    List<Creature> diedThisTurn = new List<Creature>() { enemies[enemytarget] };
-
-                    foreach (Creature enemy in diedThisTurn.ToList())
-                    {
-                            System.Console.WriteLine($"{enemy.Name} has been defeated!");
-                            enemies.Remove(enemy);
-                            enemy.IsAlive = false;
-                    }
-
-                }
-
-            }
         }
 
     }
