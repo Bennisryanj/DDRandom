@@ -1,6 +1,6 @@
 using System;
-using Characterclass;
 using magic;
+using PlayerRace;
 
 namespace Creatures
 
@@ -8,7 +8,7 @@ namespace Creatures
     public class Druid : Creature
     {
 
-    public override List<string> Spells { get; set; } = new List<string> {"Healing Word"};
+    public override List<string> Spells { get; set; } = new List<string> {"Healing Word","Entangle","Shillelagh"};
     public override string Name { get; set;} = "Druid";
     public override int Strength { get; set; } = 10;
     public override int Dexterity { get; set; } = 10;
@@ -39,10 +39,12 @@ namespace Creatures
     public override double challengeRating { get; set; }
 
     public override int Level { get; set; } = 1;
+
     public override int getModifier(int abilityScore)
     {
         return (abilityScore - 10) / 2;
     }
+     public override Race creatureRace { get; set;}
 
     }
 }

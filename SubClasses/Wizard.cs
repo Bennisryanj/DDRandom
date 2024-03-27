@@ -1,5 +1,4 @@
 using System;
-using Characterclass;
 using magic;
 using Creatures;
 using PlayerRace;
@@ -48,6 +47,8 @@ namespace Creatures
         public int SpellSlots { get; set; } = 2;
         public int SpellSlotsUsed { get; set; } = 0;
         public int SpellSaveDC { get; set; } = 10;
+
+         public override Race creatureRace { get; set;}
 
        
 

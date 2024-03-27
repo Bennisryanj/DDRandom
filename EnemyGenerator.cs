@@ -16,7 +16,7 @@ namespace EnemyGenerator
         {
             List<Creature> enemies = new List<Creature>();
 
-            double calculatedChallengeRating = ((double)partyaverageLevel * .6635) -.305;
+            double calculatedChallengeRating = ((double)partyaverageLevel * .9) -.305;
 
             while (challengeRating <= calculatedChallengeRating || (enemies.Count == 0))
             {
@@ -33,7 +33,7 @@ namespace EnemyGenerator
             CreatureFactory creatureFactory = new CreatureFactory();
 
             var goblin = creatureFactory.CreateGoblin();
-            
+            goblin.Name = goblin.generateGoblinName();            
             return goblin;
         }
     }

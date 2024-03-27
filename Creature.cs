@@ -1,4 +1,6 @@
 
+using PlayerRace;
+
 namespace Creatures
 {
 public abstract class Creature
@@ -36,6 +38,8 @@ public abstract class Creature
      public abstract int getModifier( int abilityScore);
 
     public abstract int Level { get; set; } 
+
+    public abstract Race creatureRace { get; set; }
 
 }
 

@@ -1,5 +1,4 @@
 using System;
-using Characterclass;
 using DwarfRace;
 using ElfRace;
 using HlaflingRace;
@@ -69,6 +68,7 @@ namespace PartyGenerator
             wizard.ArmorClass = wizard.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
             wizard.Initiative = wizard.Initiative + playerRace[raceIndex].InitiativeModifier;
             wizard.IsAlive = true;
+            wizard.creatureRace = playerRace[raceIndex];
             
             return wizard;
         }
@@ -89,6 +89,7 @@ namespace PartyGenerator
             rouge.ArmorClass = rouge.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
             rouge.Initiative = rouge.Initiative + playerRace[raceIndex].InitiativeModifier;
             rouge.IsAlive = true;
+            rouge.creatureRace = playerRace[raceIndex];
 
             return rouge;
 
@@ -110,6 +111,7 @@ namespace PartyGenerator
             fighter.ArmorClass = fighter.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
             fighter.Initiative = fighter.Initiative + playerRace[raceIndex].InitiativeModifier;
             fighter.IsAlive = true;
+            fighter.creatureRace = playerRace[raceIndex];
 
             return fighter;
         }
@@ -130,6 +132,7 @@ namespace PartyGenerator
             druid.ArmorClass = druid.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
             druid.Initiative = druid.Initiative + playerRace[raceIndex].InitiativeModifier;
             druid.IsAlive = true;
+            druid.creatureRace = playerRace[raceIndex];
 
             return druid;
         
