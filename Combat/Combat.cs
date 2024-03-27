@@ -13,8 +13,11 @@ namespace Combat
 {
     public class Combat1
     {
+        CombatLogger combatLogger = new CombatLogger();
         SpellAttack spell = new SpellAttack();
         PyshicalAttack attack = new PyshicalAttack();
+
+        string message = "";
 
         public void Fight(List<Creature> party, List<Creature> enemies, List<Creature> iniativeOrder)
         {
@@ -42,7 +45,9 @@ namespace Combat
                     if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
                     {
                         int enemyattack = attack.damage(character,party[partytarget],character.StrengthModifier);
-                        System.Console.WriteLine($"{character.Name} attacks {party[partytarget].Name} for {enemyattack} damage!");
+                        message = $"{character.Name} attacks {party[partytarget].Name} for {enemyattack} damage!";
+                        System.Console.WriteLine(message);
+                        combatLogger.logAttack(message);
                     }
                 }
 
@@ -67,7 +72,9 @@ namespace Combat
 
                     foreach (Creature character1 in diedThisTurn.ToList())
                     {
-                        System.Console.WriteLine($"{character1.Name} has been defeated!");
+                        message = $"{character1.Name} has been defeated!";
+                        System.Console.WriteLine(message);
+                        combatLogger.logAttack(message);
                             party.Remove(character1);
                             character1.IsAlive = false;
 
@@ -82,7 +89,9 @@ namespace Combat
 
                     foreach (Creature enemy in diedThisTurn.ToList())
                     {
-                            System.Console.WriteLine($"{enemy.Name} has been defeated!");
+                        message = $"{enemy.Name} has been defeated!";
+                            System.Console.WriteLine(message);
+                            combatLogger.logAttack(message);
                             enemies.Remove(enemy);
                             enemy.IsAlive = false;
                     }
@@ -105,18 +114,23 @@ namespace Combat
         {
             if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
                     {
-                        if (character.Name == "Druid" && party[partytarget].IsAlive == true && party[partytarget].IsMonster == false)
+                          int spellcount = character.Spells.Count;
+                          int spellindex = new Random().Next(0, spellcount);
+
+                        if (character.Name == "Druid" && party[partytarget].IsAlive == true && party[partytarget].IsMonster == false && spellindex == 0)
                         {
+                          
                             int heal = spell.heal(character, party[partytarget], character.Spells[0]);
-                            System.Console.WriteLine($"{character.Name} heals {party[partytarget].Name} for {heal} hitpoints!");
-                        }
-
-
-                        if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true )
+                            message = $"The {character.creatureRace.RaceName} {character.Name} heals {party[partytarget].Name} for {heal} hitpoints!";
+                            System.Console.WriteLine(message);
+                            combatLogger.logAttack(message);
+                        } else if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true )
                         {
-                            int damage = spell.damage(character,enemies[enemytarget],character.Spells[0]);
-                            string spellname = character.Spells[0];
-                            System.Console.WriteLine($"The {character.Name} casts {spellname} on {enemies[enemytarget].Name} for {damage} damage!");
+                            int damage = spell.damage(character,enemies[enemytarget],character.Spells[spellindex]);
+                            string spellname = character.Spells[spellindex];
+                            message = $"The {character.creatureRace.RaceName} {character.Name} casts {spellname} on {enemies[enemytarget].Name} for {damage} damage!";
+                            System.Console.WriteLine(message);
+                            combatLogger.logAttack(message);
                         }
                     }
                     else
@@ -124,7 +138,9 @@ namespace Combat
                         if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
                         {
                              int physicaldamage = attack.damage(character,enemies[enemytarget], character.StrengthModifier);
-                            System.Console.WriteLine($"{character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!");
+                             message = $"The {character.creatureRace.RaceName} {character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!";
+                                System.Console.WriteLine(message);  
+                                combatLogger.logAttack(message);
                         }
                     }
         }

@@ -1,6 +1,6 @@
 using System;
-using Characterclass;
 using magic;
+using PlayerRace;
 
 namespace Creatures 
 {
@@ -42,6 +42,7 @@ namespace Creatures
     {
         return (abilityScore - 10) / 2;
     }
+     public override Race creatureRace { get; set;}
 
 
 

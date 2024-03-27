@@ -15,23 +15,34 @@ namespace DDDungeon
 
         private int roomNumber;
 
+        string message = "";
+        CombatLogger combatLogger = new CombatLogger();
+
         public Dungeon()
         {
+            combatLogger.checkforExistingFile();
             enemies = new List<Creature>();
             playerAlive = true;
+            combatLogger.logAttack("Dungeon has started!");
+
         }
 
 
         public void Start()
         {
+            
             Partygenerator  partyGenerator = new Partygenerator();             
             List<Creature> party = partyGenerator.generateParty();
             
             Console.WriteLine($"Welcome to the Dungeon!");
+
             System.Console.WriteLine("The Party is made up of the following characters:");
+           
             foreach (Creature character in party)
             {
-                System.Console.WriteLine($"{character.Name} has {character.HitPoints} hitpoints!");
+                message = $"{character.Name} has {character.HitPoints} hitpoints!";
+                System.Console.WriteLine(message);
+                 combatLogger.logAttack(message);
             }
             
             while (party.Count > 0 && roomNumber < 10000)
@@ -46,10 +57,15 @@ namespace DDDungeon
                 int partyLevelAverage = getPartyLevelAverage(party);   
                 EnemyGeneratorClass enemyGenerator = new EnemyGeneratorClass();
                 List<Creature> enemies = enemyGenerator.generateEnemies(partyLevelAverage);
-                System.Console.WriteLine($"Room number: {roomNumber}");
+                message = $"Room number: {roomNumber}";
+                System.Console.WriteLine(message);
+                combatLogger.logAttack(message);
+                
                 while (party.Count > 0 && enemies.Count > 0)
                 {
-                    Console.WriteLine("You are now in a room with a monster!");
+                    message = "You are now in a room with a monster!";
+                    Console.WriteLine(message);
+                    combatLogger.logAttack(message);
                     ecounter(party, enemies);
                     roomNumber += 1;
                     if (roomNumber % 3 == 0 && roomNumber % 6 != 0 && party.Count > 0)
@@ -81,7 +97,11 @@ namespace DDDungeon
                 
 
             }
-            System.Console.WriteLine($"you made it to Romm number: {roomNumber}!");
+            message = $"you made it to Romm number: {roomNumber}!";
+            System.Console.WriteLine(message);
+            combatLogger.logAttack(message);
+
+
 
         }
 
