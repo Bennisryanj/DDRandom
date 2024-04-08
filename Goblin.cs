@@ -40,11 +40,10 @@ namespace Enemy
             return (abilityScore - 10) / 2;
         }
         public override Race creatureRace { get; set; } 
-
+        string[] goblinNames = new string[] { "Gob", "Gobbo", "Clnag", "Slang", "Slack", "Glang", "Blanf", "Glob", "Globbo", "Globb" };
         public string generateGoblinName()
         {
-            string[] goblinNames = new string[] { "Gob", "Gobbo", "Clnag", "Slang", "Slack", "Glang", "Blanf", "Glob", "Globbo", "Globb" };
-
+            
             Random random = new Random();
             int index = random.Next(goblinNames.Length);
             return goblinNames[index];
