@@ -8,26 +8,24 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\bennisry\\.nuget\\packages\\": {}
+    "C:\\Users\\Buddy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj",
+      "projectUniqueName": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\DDRandom.csproj",
       "projectName": "DDRandom",
-      "projectPath": "C:\\Users\\bennisry\\Desktop\\DDRandom\\DDRandom.csproj",
-      "packagesPath": "C:\\Users\\bennisry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bennisry\\Desktop\\DDRandom\\obj\\",
+      "projectPath": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\DDRandom.csproj",
+      "packagesPath": "C:\\Users\\Buddy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bennisry\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Buddy\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -66,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

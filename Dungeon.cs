@@ -1,6 +1,6 @@
 using Combat;
 using Enemy;
-using IniativeOrder;
+using iniativeorder;
 using PartyGenerator;
 using EnemyGenerator;
 using Creatures;
@@ -57,12 +57,18 @@ namespace DDDungeon
                 int partyLevelAverage = getPartyLevelAverage(party);   
                 EnemyGeneratorClass enemyGenerator = new EnemyGeneratorClass();
                 List<Creature> enemies = enemyGenerator.generateEnemies(partyLevelAverage);
+
+                foreach (Creature enemy in enemies)
+                {
+                    message = $"{enemy.Name} has {enemy.HitPoints} hitpoints!";
+                    System.Console.WriteLine(message);
+                    combatLogger.logAttack(message);
+                }
                 message = $"Room number: {roomNumber}";
                 System.Console.WriteLine(message);
                 combatLogger.logAttack(message);
                 
-                while (party.Count > 0 && enemies.Count > 0)
-                {
+             
                     message = "You are now in a room with a monster!";
                     Console.WriteLine(message);
                     combatLogger.logAttack(message);
@@ -85,7 +91,7 @@ namespace DDDungeon
                             character.Level = Levelup(character.Level);
                         }
                     }
-                }
+                
                 if (party.Count == 0)
                 {
                     Console.WriteLine("You have been defeated!");
@@ -108,15 +114,14 @@ namespace DDDungeon
         public void ecounter(List<Creature> party, List<Creature> enemies)
         {
 
-            Combat1 combat = new Combat1();
-            IniativeOrder1 iniativeOrder = new IniativeOrder1();
-            List<Creature> io = iniativeOrder.iniativeorder(party, enemies);
+      
             System.Console.WriteLine("Order of initiative:");
-
-            while (party.Count > 0 && enemies.Count > 0)
-            {
-                combat.Fight(party, enemies, io);
-            }
+            IniativeOrder iniativeOrder = new IniativeOrder();
+            List<Creature> iniativeorder = iniativeOrder.getInitativeOrder(party, enemies);
+            Combat1 combat = new Combat1();
+      
+            combat.Fight(party, enemies,iniativeorder);
+            
 
         }
 

@@ -1,6 +1,6 @@
 public class CombatLogger 
 {
-    string filename = "C:\\Users\\bennisry\\Desktop\\DNDCombatLog\\combatlog.txt";
+    string filename = "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDCombatLog\\combatlog.txt";
 
     public void checkforExistingFile()
     {
