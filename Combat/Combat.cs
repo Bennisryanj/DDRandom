@@ -21,22 +21,20 @@ namespace Combat
 
         int attackRoll = 0;
 
-
-
         public void Fight(List<Creature> party, List<Creature> enemies, List<Creature> initativeOrder)
         {
 
             System.Console.WriteLine("The order of initiative is:");
             foreach (Creature character in initativeOrder.ToList())
             {
-             Console.WriteLine($"{character.Name} with an initiative of {character.Initiative}");   
+                Console.WriteLine($"{character.Name} with an initiative of {character.Initiative}");
             }
 
             while (party.Count > 0 && enemies.Count > 0)
             {
                 foreach (Creature character in initativeOrder.ToList())
                 {
-               
+
 
                     attackRoll = getAttackRoll(character, attackRoll);
                     int enemytarget = new Random().Next(0, enemies.Count);
@@ -127,76 +125,73 @@ namespace Combat
 
         public void playerAttack(Creature character, List<Creature> party, List<Creature> enemies, int attackRoll, int enemytarget, int partytarget)
         {
-            if (attackRoll <= enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
+            if (attackRoll <= enemies[enemytarget].ArmorClass)
             {
                 System.Console.WriteLine($"The {character.creatureRace.RaceName} {character.Name} missed the attack");
             }
             else
             {
-                 if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
-            {
-                int spellcount = character.Spells.Count;
-                int spellindex = new Random().Next(0, spellcount);
-
-                if (character.Name == "Druid" && party[partytarget].IsAlive == true && party[partytarget].IsMonster == false && spellindex == 0)
+                if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
                 {
-
-                    int heal = spell.heal(character, party[partytarget], character.Spells[0]);
-                    message = $"The {character.creatureRace.RaceName} {character.Name} heals {party[partytarget].Name} for {heal} hitpoints!";
-                    System.Console.WriteLine(message);
-                    combatLogger.logAttack(message);
+                    magicUserAttack(character, party, enemies, attackRoll, enemytarget, partytarget);
+                    
                 }
-                else if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
+                else
                 {
-                    int damage = spell.damage(character, enemies[enemytarget], character.Spells[spellindex]);
-                    string spellname = character.Spells[spellindex];
-                    message = $"The {character.creatureRace.RaceName} {character.Name} casts {spellname} on {enemies[enemytarget].Name} for {damage} damage!";
-                    System.Console.WriteLine(message);
-                    combatLogger.logAttack(message);
-                }
-            }
-            else
-            {
-                if (attackRoll > enemies[enemytarget].ArmorClass && enemies[enemytarget].IsAlive == true)
-                {
-                    int physicaldamage = attack.damage(character, enemies[enemytarget], character.StrengthModifier);
-                    message = $"The {character.creatureRace.RaceName} {character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!";
-                    System.Console.WriteLine(message);
-                    combatLogger.logAttack(message);
+                    PyshicalAttack(character, enemies, enemytarget);
                 }
             }
 
-
-
-            }
-
-           
         }
 
         public void enemyattack(Creature enemy, List<Creature> party, int attackRoll, int partytarget, List<Creature> enemies)
         {
-            if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
+
+            int enemyattack = attack.damage(enemy, party[partytarget], enemy.StrengthModifier);
+            if (attackRoll > party[partytarget].ArmorClass && party[partytarget].IsAlive == true && enemyattack > 0)
             {
-                int enemyattack = attack.damage(enemy, party[partytarget], enemy.StrengthModifier);
-                if (enemyattack <= 0)
-                {
-                    System.Console.WriteLine($"{enemy.Name} missed the attack!");
+                message = $"{enemy.Name} attacks {party[partytarget].Name} for {enemyattack} damage!";
+                System.Console.WriteLine(message);
+                combatLogger.logAttack(message);
 
-                }
-                else
-                {
-                    message = $"{enemy.Name} attacks {party[partytarget].Name} for {enemyattack} damage!";
-                    System.Console.WriteLine(message);
-                    combatLogger.logAttack(message);
-                }
-
-            } else if(attackRoll <= party[partytarget].ArmorClass && party[partytarget].IsAlive == true)
+            }
+            else
             {
                 System.Console.WriteLine($"{enemy.Name} missed the attack!");
             }
 
         }
 
+        public void magicUserAttack(Creature character, List<Creature> party, List<Creature> enemies, int attackRoll, int enemytarget, int partytarget)
+        {
+            int spellcount = character.Spells.Count;
+                    int spellindex = new Random().Next(0, spellcount);
+
+                    if (character.Name == "Druid"  && spellindex == 0)
+                    {
+
+                        int heal = spell.heal(character, party[partytarget], character.Spells[0]);
+                        message = $"The {character.creatureRace.RaceName} {character.Name} heals {party[partytarget].Name} for {heal} hitpoints!";
+                        System.Console.WriteLine(message);
+                        combatLogger.logAttack(message);
+                    }
+                    else if (attackRoll > enemies[enemytarget].ArmorClass)
+                    {
+                        int damage = spell.damage(character, enemies[enemytarget], character.Spells[spellindex]);
+                        string spellname = character.Spells[spellindex];
+                        message = $"The {character.creatureRace.RaceName} {character.Name} casts {spellname} on {enemies[enemytarget].Name} for {damage} damage!";
+                        System.Console.WriteLine(message);
+                        combatLogger.logAttack(message);
+                    }
+        }
+
+        public void PyshicalAttack( Creature character, List<Creature> enemies, int enemytarget)
+        {
+                        int physicaldamage = attack.damage(character, enemies[enemytarget], character.StrengthModifier);
+                        message = $"The {character.creatureRace.RaceName} {character.Name} attacks {enemies[enemytarget].Name} for {physicaldamage} damage!";
+                        System.Console.WriteLine(message);
+                        combatLogger.logAttack(message);
+        }
 
 
     }

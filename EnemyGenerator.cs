@@ -10,8 +10,6 @@ namespace EnemyGenerator
     public class EnemyGeneratorClass
     {
 
-       
-
         private double challengeRating {get; set;} = 0;
         
         public List<Creature> enemies = new List<Creature>();
@@ -21,7 +19,6 @@ namespace EnemyGenerator
         public List<Creature> generateEnemies(int partyaverageLevel)
         {
             
-
             double calculatedChallengeRating = ((double)partyaverageLevel * .9) -.305;
 
             while (challengeRating <= calculatedChallengeRating || (enemies.Count == 0))
