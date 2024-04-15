@@ -7,6 +7,7 @@ using PhysicalAttacks;
 using System.Security.Cryptography;
 using Enemy;
 using Creatures;
+using Items;
 
 
 namespace Combat
@@ -34,7 +35,6 @@ namespace Combat
             {
                 foreach (Creature character in initativeOrder.ToList())
                 {
-
 
                     attackRoll = getAttackRoll(character, attackRoll);
                     int enemytarget = new Random().Next(0, enemies.Count);

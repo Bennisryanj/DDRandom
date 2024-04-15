@@ -1,5 +1,6 @@
 
 using PlayerRace;
+using Items;
 
 namespace Creatures
 {
@@ -40,6 +41,8 @@ public abstract class Creature
     public abstract int Level { get; set; } 
 
     public abstract Race creatureRace { get; set; }
+
+    public abstract Weapon weapon { get; set; }
 
 }
 

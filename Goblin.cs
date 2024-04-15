@@ -1,4 +1,5 @@
 using Creatures;
+using Items;
 using PlayerRace;
 
 namespace Enemy
@@ -48,6 +49,8 @@ namespace Enemy
             int index = random.Next(goblinNames.Length);
             return goblinNames[index];
         }
+
+        public override Weapon weapon {get; set;} = new Scimitar();
     }
 
 }

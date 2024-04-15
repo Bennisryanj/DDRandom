@@ -1,6 +1,7 @@
 using System;
 using magic;
 using PlayerRace;
+using Items;
 
 namespace Creatures
 
@@ -46,5 +47,9 @@ namespace Creatures
     }
      public override Race creatureRace { get; set;}
 
+     public override  Weapon weapon { get; set; }
+
     }
+
+    
 }

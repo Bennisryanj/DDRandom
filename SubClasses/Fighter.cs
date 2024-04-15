@@ -1,11 +1,13 @@
 using System;
 using magic;
 using PlayerRace;
+using Items;
 
 namespace Creatures 
 {
     public class Fighter : Creature
 {
+
     
      public override List<string> Spells { get; set; } = new List<string> { };
     public override string Name { get; set;} = "Fighter";
@@ -43,6 +45,8 @@ namespace Creatures
         return (abilityScore - 10) / 2;
     }
      public override Race creatureRace { get; set;}
+
+     public override Weapon weapon { get; set; } = new LongSword();
 
 
 

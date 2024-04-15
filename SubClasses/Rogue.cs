@@ -1,6 +1,7 @@
 using System;
 using Creatures;
 using PlayerRace;
+using Items;
 
 namespace Creatures
 {
@@ -43,6 +44,8 @@ namespace Creatures
         public override int Level { get; set; } = 1;
 
         public override Race creatureRace { get; set;}
+
+        public override Weapon weapon { get; set; } = new Dagger();
 
 
     }

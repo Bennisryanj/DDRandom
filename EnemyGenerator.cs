@@ -1,6 +1,7 @@
 using Enemy;
 using Creatures;
 using CreatureFactories;
+using Items;
 
 
 namespace EnemyGenerator
@@ -37,6 +38,7 @@ namespace EnemyGenerator
             CreatureFactory creatureFactory = new CreatureFactory();
 
             var goblin = creatureFactory.CreateGoblin();
+            goblin.weapon = new Scimitar();
             if (!usedEnemyNames.Contains(goblin.Name))
             {
                 goblin.Name = goblin.generateGoblinName();

@@ -6,6 +6,7 @@ using HumanRace;
 using PlayerRace;
 using Creatures;
 using CreatureFactories;
+using Items;
 
 namespace PartyGenerator
 {
@@ -69,7 +70,7 @@ namespace PartyGenerator
             wizard.Initiative = wizard.Initiative + playerRace[raceIndex].InitiativeModifier;
             wizard.IsAlive = true;
             wizard.creatureRace = playerRace[raceIndex];
-            
+        
             return wizard;
         }
 
@@ -90,6 +91,7 @@ namespace PartyGenerator
             rouge.Initiative = rouge.Initiative + playerRace[raceIndex].InitiativeModifier;
             rouge.IsAlive = true;
             rouge.creatureRace = playerRace[raceIndex];
+            rouge.weapon = new Dagger();
 
             return rouge;
 
@@ -112,6 +114,7 @@ namespace PartyGenerator
             fighter.Initiative = fighter.Initiative + playerRace[raceIndex].InitiativeModifier;
             fighter.IsAlive = true;
             fighter.creatureRace = playerRace[raceIndex];
+            fighter.weapon = new LongSword();
 
             return fighter;
         }

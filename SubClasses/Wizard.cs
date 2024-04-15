@@ -3,6 +3,7 @@ using magic;
 using Creatures;
 using PlayerRace;
 using System.Dynamic;
+using Items;
 
 namespace Creatures
 {
@@ -49,6 +50,8 @@ namespace Creatures
         public int SpellSaveDC { get; set; } = 10;
 
          public override Race creatureRace { get; set;}
+
+         public override  Weapon weapon { get; set; } 
 
        
 

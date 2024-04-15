@@ -7,8 +7,10 @@ namespace PhysicalAttacks
     class PyshicalAttack : Attack
     {
         public override int attackRoll { get; set; }
-        public override int damageRoll { get; set; }
+        public override int damageRoll { get; set; } 
         public override int healRoll { get; set; }
+
+        //public static int damage {get; set;}
 
         public override int rollToAttack()
         {
@@ -19,7 +21,7 @@ namespace PhysicalAttacks
         public int damage(Creature attacker,Creature target, int Strength)
         {
             Random rnd = new Random();
-            damageRoll = rnd.Next(1, 8) + Strength;
+            damageRoll = attacker.weapon.Damage() + Strength;
             target.HitPoints -= damageRoll;
             return damageRoll;
         }
