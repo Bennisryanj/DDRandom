@@ -163,7 +163,7 @@ namespace Combat
                 System.Console.WriteLine($"{enemy.Name} missed the attack!");
 
             }
-            System.Console.WriteLine($"the Enemy rolled a {attackRoll} to attack! and did {enemyattack} damage!");
+           // System.Console.WriteLine($"the {enemy.Name} a {attackRoll} to attack! and did {enemyattack} damage!");
         }
 
         public void magicUserAttack(Creature character, List<Creature> party, List<Creature> enemies, int attackRoll, int enemytarget, int partytarget)
