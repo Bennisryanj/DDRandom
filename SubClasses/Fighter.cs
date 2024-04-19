@@ -48,6 +48,8 @@ namespace Creatures
 
      public override Weapon weapon { get; set; } = new LongSword();
 
+     public override bool IsCaster { get; set; } = false;
+
 
 
 
