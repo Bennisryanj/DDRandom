@@ -44,6 +44,8 @@ public abstract class Creature
 
     public abstract Weapon weapon { get; set; }
 
+    public abstract bool IsCaster { get; set; }
+
 }
 
 }

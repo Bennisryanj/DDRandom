@@ -113,7 +113,7 @@ namespace Combat
 
         public int getAttackRoll(Creature character, int attackRoll)
         {
-            if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
+            if (character.IsCaster == true)
             {
                 attackRoll = spell.rollToAttack() + character.IntelligenceModifier;
             }
@@ -132,7 +132,7 @@ namespace Combat
             }
             else
             {
-                if (character.Name == "Wizard" || character.Name == "Cleric" || character.Name == "Sorcerer" || character.Name == "Warlock" || character.Name == "Druid")
+                if (character.IsCaster == true)
                 {
                     magicUserAttack(character, party, enemies, attackRoll, enemytarget, partytarget);
 

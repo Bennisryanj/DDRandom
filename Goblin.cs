@@ -51,6 +51,8 @@ namespace Enemy
         }
 
         public override Weapon weapon {get; set;} = new Scimitar();
+
+        public override bool IsCaster { get; set; } = false;
     }
 
 }

@@ -49,6 +49,8 @@ namespace Creatures
 
      public override  Weapon weapon { get; set; }
 
+        public override bool IsCaster { get; set; } = true;
+
     }
 
     
