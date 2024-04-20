@@ -37,6 +37,13 @@ namespace DDDungeon
             Partygenerator partyGenerator = new Partygenerator();
             List<Creature> party = partyGenerator.generateParty();
 
+            foreach (Creature character in party)
+            {
+                character.printStats(character);
+            }
+
+
+
             Console.WriteLine($"Welcome to the Dungeon!");
 
             System.Console.WriteLine("The Party is made up of the following characters:");
