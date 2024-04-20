@@ -46,6 +46,12 @@ public abstract class Creature
 
     public abstract bool IsCaster { get; set; }
 
+    public void printStats(Creature creature)
+    {
+        System.Console.WriteLine($"Name:{creature.Name}\n Stength:{creature.Strength}\n Wisdom:{creature.Wisdom}\n Charisma:{creature.Charisma}\n Dexterity:{creature.Dexterity}\n Constitution:{creature.Constitution}\n Intelligence:{creature.Intelligence}\n MaxHitPoints:{creature.MaxHitPoints}\n ArmorClass:{creature.ArmorClass}");
+
+    }
+
 }
 
 }
