@@ -6,13 +6,14 @@ using EnemyGenerator;
 using Creatures;
 using CreatureFactories;
 using partyManager;
+using System.Runtime.CompilerServices;
+using roleplay;
 
 namespace DDDungeon
 {
     public class Dungeon
     {
         private List<Creature> enemies;
-        private bool playerAlive;
 
         private int roomNumber;
 
@@ -21,11 +22,12 @@ namespace DDDungeon
 
         PartyManager partyManager = new PartyManager();
 
+        private int nextstop = 7; 
+
         public Dungeon()
         {
             combatLogger.checkforExistingFile();
             enemies = new List<Creature>();
-            playerAlive = true;
             combatLogger.logAttack("Dungeon has started!");
 
         }
@@ -55,7 +57,7 @@ namespace DDDungeon
                 combatLogger.logAttack(message);
             }
 
-            while (party.Count > 0 && roomNumber < 10000)
+            while (party.Count > 0 && roomNumber < nextstop)
             {
 
                 int partyLevelAverage = partyManager.getPartyLevelAverage(party);
@@ -78,6 +80,7 @@ namespace DDDungeon
                 combatLogger.logAttack(message);
                 ecounter(party, enemies);
                 roomNumber += 1;
+
                 if (roomNumber % 3 == 0 && roomNumber % 6 != 0 && party.Count > 0)
                 {
                     partyManager.shortRest(party);
@@ -106,13 +109,19 @@ namespace DDDungeon
                     Console.WriteLine("You have defeated the enemies!");
                 }
 
+                if (roomNumber == nextstop)
+                {
+                    new Village { Name = "Village", Population = 1000 };
+                    
+                    Console.WriteLine("You have reached the end of the dungeon!");
+                    nextstop += 7;
+                }
+
 
             }
             message = $"you made it to Romm number: {roomNumber}!";
             System.Console.WriteLine(message);
             combatLogger.logAttack(message);
-
-
 
         }
 

@@ -10,12 +10,12 @@ namespace Creatures
     {
         public override List<string> Spells { get; set; } = new List<string> { };
         public override string Name { get; set; } = "Rogue";
-        public override int Strength { get; set; } = 12;
-        public override int Dexterity { get; set; } = 15;
-        public override int Intelligence { get; set; } = 10;
-        public override int Wisdom { get; set; } = 14;
-        public override int Constitution { get; set; } = 13;
-        public override int Charisma { get; set; } = 8;
+        public override int Strength { get; set; } 
+        public override int Dexterity { get; set; } 
+        public override int Intelligence { get; set; } 
+        public override int Wisdom { get; set; } 
+        public override int Constitution { get; set; } 
+        public override int Charisma { get; set; } 
 
         public override int HitPoints { get; set; } = 10;
         public override int MaxHitPoints { get; set; } = 10;
