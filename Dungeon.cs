@@ -50,13 +50,6 @@ namespace DDDungeon
 
             System.Console.WriteLine("The Party is made up of the following characters:");
 
-            foreach (Creature character in party)
-            {
-                message = $"{character.Name} has {character.HitPoints} hitpoints!";
-                System.Console.WriteLine(message);
-                combatLogger.logAttack(message);
-            }
-
             while (party.Count > 0 && roomNumber < nextstop)
             {
 

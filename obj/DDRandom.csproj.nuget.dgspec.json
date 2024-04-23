@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj": {}
+    "C:\\Users\\Buddy\\Desktop\\DDRandom\\DDRandom\\DDRandom.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj": {
+    "C:\\Users\\Buddy\\Desktop\\DDRandom\\DDRandom\\DDRandom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj",
+        "projectUniqueName": "C:\\Users\\Buddy\\Desktop\\DDRandom\\DDRandom\\DDRandom.csproj",
         "projectName": "DDRandom",
-        "projectPath": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj",
+        "projectPath": "C:\\Users\\Buddy\\Desktop\\DDRandom\\DDRandom\\DDRandom.csproj",
         "packagesPath": "C:\\Users\\Buddy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\obj\\",
+        "outputPath": "C:\\Users\\Buddy\\Desktop\\DDRandom\\DDRandom\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Buddy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Buddy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -58,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.104/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

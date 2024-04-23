@@ -1,5 +1,6 @@
 using CreatureFactories;
 using Creatures;
+using PlayerRace;
 
 namespace Enemy
 {
@@ -16,7 +17,7 @@ namespace Enemy
             return new BugBear();
         }
 
-        public Wizard CreateWizard()
+        public Wizard CreateWizard(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
         {
             throw new NotImplementedException();
         }

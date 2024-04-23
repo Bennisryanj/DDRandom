@@ -62,28 +62,9 @@ namespace PartyGenerator
         public Creature generateWizard(int partyIndex)
         {
             int raceIndex = new Random().Next(0, playerRace.Length);
-            var wizard = creatureFactory.CreateWizard();
+            var wizard = creatureFactory.CreateWizard(dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), playerRace[raceIndex], partyIndex);
 
-            wizard.PartyIndex = partyIndex;
-            wizard.Strength = dice.rollAd20();
-            wizard.StrengthModifier = wizard.getModifier(wizard.Strength) + playerRace[raceIndex].StrengthModifier;
-            wizard.Wisdom = dice.rollAd20();
-            wizard.WisdomModifier = wizard.getModifier(wizard.Wisdom)  + playerRace[raceIndex].WisdomModifier;
-            wizard.Intelligence = dice.rollAd20();
-            wizard.IntelligenceModifier = wizard.getModifier(wizard.Intelligence) + playerRace[raceIndex].IntelligenceModifier;
-            wizard.Charisma = dice.rollAd20();
-            wizard.CharismaModifier = wizard.getModifier(wizard.Charisma) + playerRace[raceIndex].CharismaModifier;
-            wizard.Dexterity = dice.rollAd20();
-            wizard.DexterityModifier = wizard.getModifier(wizard.Dexterity) + playerRace[raceIndex].DexterityModifier;
-            wizard.Constitution = dice.rollAd20();
-            wizard.ConstitutionModifier = wizard.getModifier(wizard.Constitution) + playerRace[raceIndex].ConstitutionModifier;
-            wizard.MaxHitPoints = wizard.MaxHitPoints + playerRace[raceIndex].HitPointsModifier;
-            wizard.HitPoints = wizard.MaxHitPoints;
-            wizard.ArmorClass = wizard.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
-            wizard.Initiative = wizard.Initiative + playerRace[raceIndex].InitiativeModifier;
-            wizard.IsAlive = true;
-            wizard.creatureRace = playerRace[raceIndex];
-        
+            // wizard.PartyIndex = partyIndex;
             return wizard;
         }
 
