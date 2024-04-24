@@ -22,17 +22,17 @@ namespace Enemy
             throw new NotImplementedException();
         }
 
-        public Rouge CreateRouge()
+        public Rouge CreateRouge(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
         {
             throw new NotImplementedException();
         }
 
-        public Fighter CreateFighter()
+        public Fighter CreateFighter(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
         {
             throw new NotImplementedException();
         }
 
-        public Druid CreateDruid()
+        public Druid CreateDruid( int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
         {
             throw new NotImplementedException();
         }

@@ -22,19 +22,22 @@ namespace CreatureFactories
             return new Wizard(strength,dexterity, intelligence, wisdom, constitution,charisma, race, partyIndex);
         }
 
-        public Rouge CreateRouge()
+        public Rouge CreateRouge(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
         {
-            return new Rouge();
+            return new Rouge(strength, dexterity, intelligence, wisdom, constitution, charisma, race, partyIndex);
+
         }   
 
-        public Fighter CreateFighter()
+        public Fighter CreateFighter( int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma,Race race, int partyIndex)
         {
-            return new Fighter();
+            return new Fighter(strength, dexterity, intelligence, wisdom, constitution, charisma, race, partyIndex);
+
         }
 
-        public Druid CreateDruid()
+        public Druid CreateDruid(int strength, int dexterity, int intelligence, int wisdom, int constitution, int Charisma, Race race, int partyIndex)
         {
-            return new Druid();
+            return new Druid(strength, dexterity, intelligence, wisdom, constitution, Charisma, race, partyIndex);
+
         }
     }
 }

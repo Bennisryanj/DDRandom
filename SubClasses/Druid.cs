@@ -9,6 +9,43 @@ namespace Creatures
     public class Druid : Creature
     {
 
+
+    public Druid()
+    {
+
+    }
+
+    public Druid(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
+    {
+       this.Name = "Druid";
+            this.IsAlive = true;
+            this.PartyIndex = partyIndex;
+            this.IsMonster = false;
+            this.IsHidden = false;
+            this.IsAlive = true;
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Intelligence = intelligence;
+            this.Wisdom = wisdom;
+            this.Constitution = constitution;
+            this.Charisma = charisma;
+            this.StrengthModifier = getModifier(strength);
+            this.DexterityModifier = getModifier(dexterity);
+            this.IntelligenceModifier = getModifier(intelligence);
+            this.WisdomModifier = getModifier(wisdom);
+            this.ConstitutionModifier = getModifier(constitution);
+            this.CharismaModifier = getModifier(charisma);
+            this.Level = 1; 
+            MaxHitPoints = 10 + race.HitPointsModifier;
+            this.HitPoints = 10;
+            this.Initiative = 0 + race.InitiativeModifier;
+            this.ArmorClass = 10 + race.ArmorClassModifier;    
+            this.Spells = new List<string> {"Healing Word","Entangle","Shillelagh"};
+            this.creatureRace = race;
+        
+
+    }
+
     public override List<string> Spells { get; set; } = new List<string> {"Healing Word","Entangle","Shillelagh"};
     public override string Name { get; set;} = "Druid";
     public override int Strength { get; set; } 
