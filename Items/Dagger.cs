@@ -3,7 +3,7 @@ using Die;
 namespace Items
 {
 
-    public class Dagger : Weapon
+    public class Dagger : Weapon, IWeapon
     {
 
 

@@ -3,7 +3,7 @@ using Die;
 namespace Items
 {
 
-    public class Scimitar : Weapon
+    public class Scimitar : Weapon, IWeapon
     {
 
         private Dice diceroll;

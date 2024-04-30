@@ -44,8 +44,6 @@ namespace DDDungeon
                 character.printStats(character);
             }
 
-
-
             Console.WriteLine($"Welcome to the Dungeon!");
 
             System.Console.WriteLine("The Party is made up of the following characters:");
@@ -106,7 +104,7 @@ namespace DDDungeon
                 {
                     new Village { Name = "Village", Population = 1000 };
                     
-                    Console.WriteLine("You have reached the end of the dungeon!");
+                    Console.WriteLine("You have reached the end of the dungeon and Entered the Village!");
                     nextstop += 7;
                 }
 

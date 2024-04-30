@@ -3,7 +3,7 @@ using Die;
 namespace Items
 {
 
-    public class Javlin : Weapon
+    public class Javlin : Weapon, IWeapon
     {
       
         private Dice diceroll;
