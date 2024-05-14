@@ -62,53 +62,17 @@ namespace PartyGenerator
         public Creature generateWizard(int partyIndex)
         {
             int raceIndex = new Random().Next(0, playerRace.Length);
-            var wizard = creatureFactory.CreateWizard();
+            var wizard = creatureFactory.CreateWizard(dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), playerRace[raceIndex], partyIndex);
 
-            wizard.PartyIndex = partyIndex;
-            wizard.Strength = dice.rollAd20();
-            wizard.StrengthModifier = wizard.getModifier(wizard.Strength) + playerRace[raceIndex].StrengthModifier;
-            wizard.Wisdom = dice.rollAd20();
-            wizard.WisdomModifier = wizard.getModifier(wizard.Wisdom)  + playerRace[raceIndex].WisdomModifier;
-            wizard.Intelligence = dice.rollAd20();
-            wizard.IntelligenceModifier = wizard.getModifier(wizard.Intelligence) + playerRace[raceIndex].IntelligenceModifier;
-            wizard.Charisma = dice.rollAd20();
-            wizard.CharismaModifier = wizard.getModifier(wizard.Charisma) + playerRace[raceIndex].CharismaModifier;
-            wizard.Dexterity = dice.rollAd20();
-            wizard.DexterityModifier = wizard.getModifier(wizard.Dexterity) + playerRace[raceIndex].DexterityModifier;
-            wizard.Constitution = dice.rollAd20();
-            wizard.ConstitutionModifier = wizard.getModifier(wizard.Constitution) + playerRace[raceIndex].ConstitutionModifier;
-            wizard.MaxHitPoints = wizard.MaxHitPoints + playerRace[raceIndex].HitPointsModifier;
-            wizard.HitPoints = wizard.MaxHitPoints;
-            wizard.ArmorClass = wizard.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
-            wizard.Initiative = wizard.Initiative + playerRace[raceIndex].InitiativeModifier;
-            wizard.IsAlive = true;
-            wizard.creatureRace = playerRace[raceIndex];
-        
+            // wizard.PartyIndex = partyIndex;
             return wizard;
         }
 
         public Creature generateRougue(int partyIndex)
         {
             int raceIndex = new Random().Next(0, playerRace.Length);
-            var rouge = creatureFactory.CreateRouge();
+            var rouge = creatureFactory.CreateRouge(dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), playerRace[raceIndex], partyIndex);
 
-            rouge.PartyIndex = partyIndex;
-            rouge.Strength = dice.rollAd20();
-            rouge.StrengthModifier = rouge.getModifier(rouge.Strength) + playerRace[raceIndex].StrengthModifier;
-            rouge.Wisdom = dice.rollAd20();
-            rouge.WisdomModifier = rouge.getModifier(rouge.Wisdom) + playerRace[raceIndex].WisdomModifier;;
-            rouge.Charisma = dice.rollAd20();
-            rouge.CharismaModifier = rouge.getModifier(rouge.Charisma) + playerRace[raceIndex].CharismaModifier;
-            rouge.Dexterity = dice.rollAd20();
-            rouge.DexterityModifier = rouge.getModifier(rouge.Dexterity) + playerRace[raceIndex].DexterityModifier;
-            rouge.Constitution = dice.rollAd20();
-            rouge.ConstitutionModifier = rouge.getModifier(rouge.Constitution) + playerRace[raceIndex].ConstitutionModifier;
-            rouge.MaxHitPoints = rouge.MaxHitPoints + playerRace[raceIndex].HitPointsModifier;
-            rouge.HitPoints = rouge.MaxHitPoints;
-            rouge.ArmorClass = rouge.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
-            rouge.Initiative = rouge.Initiative + playerRace[raceIndex].InitiativeModifier;
-            rouge.IsAlive = true;
-            rouge.creatureRace = playerRace[raceIndex];
             rouge.weapon = new Dagger();
 
             return rouge;
@@ -118,25 +82,8 @@ namespace PartyGenerator
         public Creature generateFighter(int partyIndex)
         {
             int raceIndex = new Random().Next(0, playerRace.Length);
-            var fighter = creatureFactory.CreateFighter();
+            var fighter = creatureFactory.CreateFighter(dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), playerRace[raceIndex], partyIndex);
 
-            fighter.PartyIndex = partyIndex;
-            fighter.Strength = dice.rollAd20();
-            fighter.StrengthModifier = fighter.getModifier(fighter.Strength) + playerRace[raceIndex].StrengthModifier;
-            fighter.Wisdom = dice.rollAd20();
-            fighter.WisdomModifier = fighter.getModifier(fighter.Wisdom) + playerRace[raceIndex].WisdomModifier;
-            fighter.Charisma = dice.rollAd20();
-            fighter.CharismaModifier = fighter.getModifier(fighter.Charisma) + playerRace[raceIndex].CharismaModifier;
-            fighter.Dexterity = dice.rollAd20();
-            fighter.DexterityModifier = fighter.getModifier(fighter.Dexterity) + playerRace[raceIndex].DexterityModifier;
-            fighter.Constitution = dice.rollAd20();
-            fighter.ConstitutionModifier = fighter.getModifier(fighter.Constitution) + playerRace[raceIndex].ConstitutionModifier;
-            fighter.MaxHitPoints = fighter.MaxHitPoints + playerRace[raceIndex].HitPointsModifier;
-            fighter.HitPoints = fighter.MaxHitPoints;
-            fighter.ArmorClass = fighter.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
-            fighter.Initiative = fighter.Initiative + playerRace[raceIndex].InitiativeModifier;
-            fighter.IsAlive = true;
-            fighter.creatureRace = playerRace[raceIndex];
             fighter.weapon = new LongSword();
 
             return fighter;
@@ -145,25 +92,7 @@ namespace PartyGenerator
         public Creature generateDruid(int partyIndex)
         {
             int raceIndex = new Random().Next(0, playerRace.Length);
-            var druid = creatureFactory.CreateDruid();
-
-            druid.PartyIndex = partyIndex;
-            druid.Strength = dice.rollAd20();
-            druid.StrengthModifier = druid.getModifier(druid.Strength) + playerRace[raceIndex].StrengthModifier;
-            druid.Wisdom = dice.rollAd20();
-            druid.WisdomModifier = druid.getModifier(druid.Wisdom) + playerRace[raceIndex].WisdomModifier;
-            druid.Charisma = dice.rollAd20();
-            druid.CharismaModifier = druid.getModifier(druid.Charisma) + playerRace[raceIndex].CharismaModifier;
-            druid.Dexterity = dice.rollAd20();
-            druid.DexterityModifier = druid.getModifier(druid.Dexterity) + playerRace[raceIndex].DexterityModifier;
-            druid.Constitution = dice.rollAd20();
-            druid.ConstitutionModifier = druid.getModifier(druid.Constitution) + playerRace[raceIndex].ConstitutionModifier;
-            druid.MaxHitPoints = druid.MaxHitPoints + playerRace[raceIndex].HitPointsModifier;
-            druid.HitPoints = druid.MaxHitPoints;
-            druid.ArmorClass = druid.ArmorClass + playerRace[raceIndex].ArmorClassModifier;
-            druid.Initiative = druid.Initiative + playerRace[raceIndex].InitiativeModifier;
-            druid.IsAlive = true;
-            druid.creatureRace = playerRace[raceIndex];
+            var druid = creatureFactory.CreateDruid(dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), dice.rollAd20(), playerRace[raceIndex], partyIndex);
 
             return druid;
         

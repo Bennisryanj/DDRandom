@@ -9,6 +9,43 @@ namespace Creatures
 {
     public class Wizard : Creature
     {
+
+        public Wizard()
+        {
+
+        }
+
+
+        public Wizard(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
+        {
+            this.Name = "Wizard";
+            this.IsAlive = true;
+            this.PartyIndex = partyIndex;
+            this.IsMonster = false;
+            this.IsHidden = false;
+            this.IsAlive = true;
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Intelligence = intelligence;
+            this.Wisdom = wisdom;
+            this.Constitution = constitution;
+            this.Charisma = charisma;
+            this.StrengthModifier = getModifier(strength);
+            this.DexterityModifier = getModifier(dexterity);
+            this.IntelligenceModifier = getModifier(intelligence);
+            this.WisdomModifier = getModifier(wisdom);
+            this.ConstitutionModifier = getModifier(constitution);
+            this.CharismaModifier = getModifier(charisma);
+            this.Level = 1; 
+            MaxHitPoints = 10 + race.HitPointsModifier;
+            this.HitPoints = 10;
+            this.Initiative = 0 + race.InitiativeModifier;
+            this.ArmorClass = 10 + race.ArmorClassModifier;    
+            this.Spells = new List<string> { "Firebolt", "Magic Missile", "Lightning Bolt" };
+            this.creatureRace = race;
+
+            }
+
          public override int getModifier(int abilityScore)
         {
             return (abilityScore - 10) / 2;
@@ -22,8 +59,6 @@ namespace Creatures
         public override int Wisdom { get; set; } 
         public override int Constitution { get; set; } 
         public override int Charisma { get; set; } 
-
-        public override int HitPoints { get; set; } = 10;
         public override int MaxHitPoints { get; set; } = 10;
         public override int ArmorClass { get; set; } = 10;
         public override int Initiative { get; set; } = 0;
@@ -36,6 +71,8 @@ namespace Creatures
         public override int CharismaModifier { get; set; }
         public override int DexterityModifier { get; set; }
         public override int ConstitutionModifier { get; set; }
+
+        public override int HitPoints { get; set; } = 10;
 
         public override int IntelligenceModifier { get; set; }
         public override int InitiativeModifier { get; set; }

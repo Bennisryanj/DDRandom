@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj": {}
+    "c:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\DDRandom.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj": {
+    "c:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\DDRandom.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj",
+        "projectUniqueName": "c:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\DDRandom.csproj",
         "projectName": "DDRandom",
-        "projectPath": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\DDRandom.csproj",
+        "projectPath": "c:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\DDRandom.csproj",
         "packagesPath": "C:\\Users\\Buddy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\ddrandom\\obj\\",
+        "outputPath": "c:\\Users\\Buddy\\OneDrive\\Desktop\\DNDRandomApp\\DDRandom\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Buddy\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,3 +1,5 @@
+using System.Formats.Tar;
+
 namespace roleplay
 {
     public class Village
@@ -6,11 +8,21 @@ namespace roleplay
 
         public int Population { get; set; }
 
+        public void enterVillage()
+        {
+            System.Console.WriteLine("You have entered the village of " + Name);
+            generateBuildings();
+        }
+
         public void generateBuildings()
         {
+            
 
 
         }
+
+
+
 
     }
 

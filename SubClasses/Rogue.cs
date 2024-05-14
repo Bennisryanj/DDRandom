@@ -8,14 +8,45 @@ namespace Creatures
 
     public class Rouge : Creature
     {
+        public Rouge() {}
+
+        public Rouge(int strength, int dexterity, int intelligence, int wisdom, int constitution, int charisma, Race race, int partyIndex)
+        {
+
+            this.Name = "Rouge";
+            this.IsAlive = true;
+            this.PartyIndex = partyIndex;
+            this.IsMonster = false;
+            this.IsHidden = false;
+            this.IsAlive = true;
+            this.Strength = strength;
+            this.Dexterity = dexterity;
+            this.Intelligence = intelligence;
+            this.Wisdom = wisdom;
+            this.Constitution = constitution;
+            this.Charisma = charisma;
+            this.StrengthModifier = getModifier(strength);
+            this.DexterityModifier = getModifier(dexterity);
+            this.IntelligenceModifier = getModifier(intelligence);
+            this.WisdomModifier = getModifier(wisdom);
+            this.ConstitutionModifier = getModifier(constitution);
+            this.CharismaModifier = getModifier(charisma);
+            this.Level = 1; 
+            MaxHitPoints = 10 + race.HitPointsModifier;
+            this.HitPoints = 10;
+            this.Initiative = 0 + race.InitiativeModifier;
+            this.ArmorClass = 10 + race.ArmorClassModifier;    
+            this.creatureRace = race;
+        }
+
         public override List<string> Spells { get; set; } = new List<string> { };
         public override string Name { get; set; } = "Rogue";
-        public override int Strength { get; set; } = 12;
-        public override int Dexterity { get; set; } = 15;
-        public override int Intelligence { get; set; } = 10;
-        public override int Wisdom { get; set; } = 14;
-        public override int Constitution { get; set; } = 13;
-        public override int Charisma { get; set; } = 8;
+        public override int Strength { get; set; } 
+        public override int Dexterity { get; set; } 
+        public override int Intelligence { get; set; } 
+        public override int Wisdom { get; set; } 
+        public override int Constitution { get; set; } 
+        public override int Charisma { get; set; } 
 
         public override int HitPoints { get; set; } = 10;
         public override int MaxHitPoints { get; set; } = 10;
