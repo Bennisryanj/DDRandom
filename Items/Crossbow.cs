@@ -17,9 +17,9 @@ namespace Items
 
         public override string Description { get; set; } = "A crossbow";
 
-        public override int DamageModifier {get; set;} = 0;
+        public new  int DamageModifier {get; set;} = 0;
 
-        public  override int Damage() { diceroll = new Dice();
+        public new  int Damage() { diceroll = new Dice();
             return  diceroll.rollAd8(); } 
 
     }

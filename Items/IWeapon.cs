@@ -11,7 +11,7 @@ public interface IWeapon
 
     public int DamageModifier {get; set;}
 
-    public int Damage() { return 0; } 
+    public int Damage() { return DamageModifier;}
 
 }
 }

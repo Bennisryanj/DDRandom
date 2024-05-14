@@ -12,9 +12,10 @@ namespace RandomEncounters
 
 
 
-        public void createMagicItem(IWeaponFactory magicfacotry)
+        public void createMagicItem(IWeaponFactory magicfactory)
         {
-           var weapon = magicfacotry.CreateWeapon();
+
+            var weapon = magicfactory.CreateWeapon();
             Name = weapon.Name;
             Value = weapon.Value;
             Description = weapon.Description;
@@ -27,6 +28,8 @@ namespace RandomEncounters
             Value = weapon.Value;
             Description = weapon.Description;
         }
+
+
     }
 
 

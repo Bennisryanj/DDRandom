@@ -1,16 +1,16 @@
 namespace Items
 {
-    public class MagicalweaponsFacotry : IWeaponFactory
+    public class BaseWeaponFactory : IWeaponFactory
     {
-
         public IWeapon CreateWeapon()
         {
-            return new Magicalweapons();
+            return new Weapon();
         }
         public IWeapon CreateWeapon(Weapon BaseWeapon)
         {
-            return new Magicalweapons(BaseWeapon);
+            return new Weapon(BaseWeapon);
         }
     }
+
 
 }

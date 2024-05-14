@@ -17,13 +17,13 @@ namespace Items
 
         public override string Description { get; set; } = "Scimitar";
 
-        public override int Damage() 
+        public  int Damage() 
         {
             diceroll = new Dice();
            return  diceroll.rollAd6();
         }
 
-        public override int DamageModifier { get; set; } = 0;
+        public  int DamageModifier { get; set; } = 0;
 
 
     }
